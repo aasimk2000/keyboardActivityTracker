@@ -19,11 +19,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         // Insert code here to initialize your application
         if let button = statusItem.button {
             button.title = "💩"
-            button.action = #selector(printStuff(_:))
+            button.action = #selector(printStuff)
         }
     }
     
-    @objc func printStuff(_ sender: Any?) {
+    @objc func printStuff() {
         print("Testing menubar button")
     }
 
