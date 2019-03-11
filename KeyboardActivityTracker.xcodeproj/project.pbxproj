@@ -79,8 +79,7 @@
 			isa = PBXGroup;
 			children = (
 				8CCB4720223708E40038CDFC /* KeyboardActivityTracker */,
-				8CCB4734223708E50038CDFC /* KeyboardActivityTrackerTests */,
-				8CCB473F223708E50038CDFC /* KeyboardActivityTrackerUITests */,
+				8CCB475022371C2E0038CDFC /* Tests */,
 				8CCB471F223708E40038CDFC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -99,12 +98,12 @@
 			isa = PBXGroup;
 			children = (
 				8CCB4721223708E40038CDFC /* AppDelegate.swift */,
+				8CCB474E22370B0A0038CDFC /* EventMonitor.swift */,
 				8CCB4726223708E50038CDFC /* Assets.xcassets */,
 				8CCB4728223708E50038CDFC /* MainMenu.xib */,
 				8CCB472B223708E50038CDFC /* Info.plist */,
 				8CCB472C223708E50038CDFC /* KeyboardActivityTracker.entitlements */,
 				8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */,
-				8CCB474E22370B0A0038CDFC /* EventMonitor.swift */,
 			);
 			path = KeyboardActivityTracker;
 			sourceTree = "<group>";
@@ -125,6 +124,15 @@
 				8CCB4742223708E50038CDFC /* Info.plist */,
 			);
 			path = KeyboardActivityTrackerUITests;
+			sourceTree = "<group>";
+		};
+		8CCB475022371C2E0038CDFC /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB4734223708E50038CDFC /* KeyboardActivityTrackerTests */,
+				8CCB473F223708E50038CDFC /* KeyboardActivityTrackerUITests */,
+			);
+			name = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
