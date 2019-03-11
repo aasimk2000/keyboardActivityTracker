@@ -11,7 +11,7 @@ import CoreData
 
 class KeyboardTracker: NSObject {
     var eventMonitor: EventMonitor?
-    var keyPresses = 0
+    var keyStrokeCount = 0
     var firstEvent: Date?
     var lastEvent: Date?
     
@@ -22,15 +22,15 @@ class KeyboardTracker: NSObject {
                 //print(currentTime.timeIntervalSince(time))
                 if (Double(currentTime.timeIntervalSince(time)) > 15) {
                     self?.doSomething()
-                    self?.keyPresses = 0
+                    self?.keyStrokeCount = 0
                     self?.lastEvent = currentTime
                     self?.firstEvent = currentTime
                 } else {
-                    self?.keyPresses += 1
+                    self?.keyStrokeCount += 1
                     self?.lastEvent = currentTime
                 }
             } else {
-                self?.keyPresses += 1
+                self?.keyStrokeCount += 1
                 self?.lastEvent = currentTime
                 self?.firstEvent = currentTime
             }
@@ -39,7 +39,7 @@ class KeyboardTracker: NSObject {
     }
     
     func printKeypresses() {
-        print("Keypresses — \(keyPresses)")
+        print("Keypresses — \(keyStrokeCount)")
     }
     
     func doSomething() {
@@ -48,7 +48,7 @@ class KeyboardTracker: NSObject {
         
         if let context = delegate?.persistentContainer.viewContext {
             let keypresses = NSEntityDescription.insertNewObject(forEntityName: "KeyPresses", into: context) as! KeyPresses
-            keypresses.numKeyStrokes = Int16(keyPresses)
+            keypresses.numKeyStrokes = Int16(keyStrokeCount)
             keypresses.startTime = firstEvent as NSDate?
             keypresses.endTime = lastEvent as NSDate?
             
