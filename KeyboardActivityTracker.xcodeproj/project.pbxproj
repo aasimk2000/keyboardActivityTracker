@@ -1,0 +1,595 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4721223708E40038CDFC /* AppDelegate.swift */; };
+		8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */; };
+		8CCB4727223708E50038CDFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB4726223708E50038CDFC /* Assets.xcassets */; };
+		8CCB472A223708E50038CDFC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB4728223708E50038CDFC /* MainMenu.xib */; };
+		8CCB4736223708E50038CDFC /* KeyboardActivityTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4735223708E50038CDFC /* KeyboardActivityTrackerTests.swift */; };
+		8CCB4741223708E50038CDFC /* KeyboardActivityTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4740223708E50038CDFC /* KeyboardActivityTrackerUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8CCB4732223708E50038CDFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CCB4716223708E40038CDFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CCB471D223708E40038CDFC;
+			remoteInfo = KeyboardActivityTracker;
+		};
+		8CCB473D223708E50038CDFC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8CCB4716223708E40038CDFC /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8CCB471D223708E40038CDFC;
+			remoteInfo = KeyboardActivityTracker;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8CCB471E223708E40038CDFC /* KeyboardActivityTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardActivityTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CCB4721223708E40038CDFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8CCB4724223708E40038CDFC /* KeyboardActivityTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KeyboardActivityTracker.xcdatamodel; sourceTree = "<group>"; };
+		8CCB4726223708E50038CDFC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8CCB4729223708E50038CDFC /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		8CCB472B223708E50038CDFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CCB472C223708E50038CDFC /* KeyboardActivityTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = KeyboardActivityTracker.entitlements; sourceTree = "<group>"; };
+		8CCB4731223708E50038CDFC /* KeyboardActivityTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardActivityTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CCB4735223708E50038CDFC /* KeyboardActivityTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActivityTrackerTests.swift; sourceTree = "<group>"; };
+		8CCB4737223708E50038CDFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CCB473C223708E50038CDFC /* KeyboardActivityTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardActivityTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CCB4740223708E50038CDFC /* KeyboardActivityTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActivityTrackerUITests.swift; sourceTree = "<group>"; };
+		8CCB4742223708E50038CDFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8CCB471B223708E40038CDFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CCB472E223708E50038CDFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CCB4739223708E50038CDFC /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8CCB4715223708E40038CDFC = {
+			isa = PBXGroup;
+			children = (
+				8CCB4720223708E40038CDFC /* KeyboardActivityTracker */,
+				8CCB4734223708E50038CDFC /* KeyboardActivityTrackerTests */,
+				8CCB473F223708E50038CDFC /* KeyboardActivityTrackerUITests */,
+				8CCB471F223708E40038CDFC /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8CCB471F223708E40038CDFC /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB471E223708E40038CDFC /* KeyboardActivityTracker.app */,
+				8CCB4731223708E50038CDFC /* KeyboardActivityTrackerTests.xctest */,
+				8CCB473C223708E50038CDFC /* KeyboardActivityTrackerUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8CCB4720223708E40038CDFC /* KeyboardActivityTracker */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB4721223708E40038CDFC /* AppDelegate.swift */,
+				8CCB4726223708E50038CDFC /* Assets.xcassets */,
+				8CCB4728223708E50038CDFC /* MainMenu.xib */,
+				8CCB472B223708E50038CDFC /* Info.plist */,
+				8CCB472C223708E50038CDFC /* KeyboardActivityTracker.entitlements */,
+				8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */,
+			);
+			path = KeyboardActivityTracker;
+			sourceTree = "<group>";
+		};
+		8CCB4734223708E50038CDFC /* KeyboardActivityTrackerTests */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB4735223708E50038CDFC /* KeyboardActivityTrackerTests.swift */,
+				8CCB4737223708E50038CDFC /* Info.plist */,
+			);
+			path = KeyboardActivityTrackerTests;
+			sourceTree = "<group>";
+		};
+		8CCB473F223708E50038CDFC /* KeyboardActivityTrackerUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB4740223708E50038CDFC /* KeyboardActivityTrackerUITests.swift */,
+				8CCB4742223708E50038CDFC /* Info.plist */,
+			);
+			path = KeyboardActivityTrackerUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8CCB471D223708E40038CDFC /* KeyboardActivityTracker */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CCB4745223708E50038CDFC /* Build configuration list for PBXNativeTarget "KeyboardActivityTracker" */;
+			buildPhases = (
+				8CCB471A223708E40038CDFC /* Sources */,
+				8CCB471B223708E40038CDFC /* Frameworks */,
+				8CCB471C223708E40038CDFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = KeyboardActivityTracker;
+			productName = KeyboardActivityTracker;
+			productReference = 8CCB471E223708E40038CDFC /* KeyboardActivityTracker.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8CCB4730223708E50038CDFC /* KeyboardActivityTrackerTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CCB4748223708E50038CDFC /* Build configuration list for PBXNativeTarget "KeyboardActivityTrackerTests" */;
+			buildPhases = (
+				8CCB472D223708E50038CDFC /* Sources */,
+				8CCB472E223708E50038CDFC /* Frameworks */,
+				8CCB472F223708E50038CDFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CCB4733223708E50038CDFC /* PBXTargetDependency */,
+			);
+			name = KeyboardActivityTrackerTests;
+			productName = KeyboardActivityTrackerTests;
+			productReference = 8CCB4731223708E50038CDFC /* KeyboardActivityTrackerTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8CCB473B223708E50038CDFC /* KeyboardActivityTrackerUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8CCB474B223708E50038CDFC /* Build configuration list for PBXNativeTarget "KeyboardActivityTrackerUITests" */;
+			buildPhases = (
+				8CCB4738223708E50038CDFC /* Sources */,
+				8CCB4739223708E50038CDFC /* Frameworks */,
+				8CCB473A223708E50038CDFC /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8CCB473E223708E50038CDFC /* PBXTargetDependency */,
+			);
+			name = KeyboardActivityTrackerUITests;
+			productName = KeyboardActivityTrackerUITests;
+			productReference = 8CCB473C223708E50038CDFC /* KeyboardActivityTrackerUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8CCB4716223708E40038CDFC /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1010;
+				LastUpgradeCheck = 1010;
+				ORGANIZATIONNAME = "Aasim Kandrikar";
+				TargetAttributes = {
+					8CCB471D223708E40038CDFC = {
+						CreatedOnToolsVersion = 10.1;
+					};
+					8CCB4730223708E50038CDFC = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 8CCB471D223708E40038CDFC;
+					};
+					8CCB473B223708E50038CDFC = {
+						CreatedOnToolsVersion = 10.1;
+						TestTargetID = 8CCB471D223708E40038CDFC;
+					};
+				};
+			};
+			buildConfigurationList = 8CCB4719223708E40038CDFC /* Build configuration list for PBXProject "KeyboardActivityTracker" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8CCB4715223708E40038CDFC;
+			productRefGroup = 8CCB471F223708E40038CDFC /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8CCB471D223708E40038CDFC /* KeyboardActivityTracker */,
+				8CCB4730223708E50038CDFC /* KeyboardActivityTrackerTests */,
+				8CCB473B223708E50038CDFC /* KeyboardActivityTrackerUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8CCB471C223708E40038CDFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CCB4727223708E50038CDFC /* Assets.xcassets in Resources */,
+				8CCB472A223708E50038CDFC /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CCB472F223708E50038CDFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CCB473A223708E50038CDFC /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8CCB471A223708E40038CDFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */,
+				8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CCB472D223708E50038CDFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CCB4736223708E50038CDFC /* KeyboardActivityTrackerTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8CCB4738223708E50038CDFC /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8CCB4741223708E50038CDFC /* KeyboardActivityTrackerUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8CCB4733223708E50038CDFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CCB471D223708E40038CDFC /* KeyboardActivityTracker */;
+			targetProxy = 8CCB4732223708E50038CDFC /* PBXContainerItemProxy */;
+		};
+		8CCB473E223708E50038CDFC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8CCB471D223708E40038CDFC /* KeyboardActivityTracker */;
+			targetProxy = 8CCB473D223708E50038CDFC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8CCB4728223708E50038CDFC /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8CCB4729223708E50038CDFC /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8CCB4743223708E50038CDFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		8CCB4744223708E50038CDFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = macosx;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		8CCB4746223708E50038CDFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeyboardActivityTracker/KeyboardActivityTracker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PQAP3QJWB;
+				INFOPLIST_FILE = KeyboardActivityTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aasimk.KeyboardActivityTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Debug;
+		};
+		8CCB4747223708E50038CDFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = KeyboardActivityTracker/KeyboardActivityTracker.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PQAP3QJWB;
+				INFOPLIST_FILE = KeyboardActivityTracker/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aasimk.KeyboardActivityTracker;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+			};
+			name = Release;
+		};
+		8CCB4749223708E50038CDFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PQAP3QJWB;
+				INFOPLIST_FILE = KeyboardActivityTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aasimk.KeyboardActivityTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyboardActivityTracker.app/Contents/MacOS/KeyboardActivityTracker";
+			};
+			name = Debug;
+		};
+		8CCB474A223708E50038CDFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PQAP3QJWB;
+				INFOPLIST_FILE = KeyboardActivityTrackerTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aasimk.KeyboardActivityTrackerTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/KeyboardActivityTracker.app/Contents/MacOS/KeyboardActivityTracker";
+			};
+			name = Release;
+		};
+		8CCB474C223708E50038CDFC /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PQAP3QJWB;
+				INFOPLIST_FILE = KeyboardActivityTrackerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aasimk.KeyboardActivityTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = KeyboardActivityTracker;
+			};
+			name = Debug;
+		};
+		8CCB474D223708E50038CDFC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				DEVELOPMENT_TEAM = 3PQAP3QJWB;
+				INFOPLIST_FILE = KeyboardActivityTrackerUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.aasimk.KeyboardActivityTrackerUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 4.2;
+				TEST_TARGET_NAME = KeyboardActivityTracker;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8CCB4719223708E40038CDFC /* Build configuration list for PBXProject "KeyboardActivityTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CCB4743223708E50038CDFC /* Debug */,
+				8CCB4744223708E50038CDFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CCB4745223708E50038CDFC /* Build configuration list for PBXNativeTarget "KeyboardActivityTracker" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CCB4746223708E50038CDFC /* Debug */,
+				8CCB4747223708E50038CDFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CCB4748223708E50038CDFC /* Build configuration list for PBXNativeTarget "KeyboardActivityTrackerTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CCB4749223708E50038CDFC /* Debug */,
+				8CCB474A223708E50038CDFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8CCB474B223708E50038CDFC /* Build configuration list for PBXNativeTarget "KeyboardActivityTrackerUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8CCB474C223708E50038CDFC /* Debug */,
+				8CCB474D223708E50038CDFC /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				8CCB4724223708E40038CDFC /* KeyboardActivityTracker.xcdatamodel */,
+			);
+			currentVersion = 8CCB4724223708E40038CDFC /* KeyboardActivityTracker.xcdatamodel */;
+			path = KeyboardActivityTracker.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 8CCB4716223708E40038CDFC /* Project object */;
+}
