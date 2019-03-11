@@ -14,6 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     @IBOutlet weak var window: NSWindow!
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    let keyboardTracker = KeyboardTracker()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
@@ -21,10 +22,18 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             button.title = "💩"
             button.action = #selector(printStuff)
         }
+        
+        let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
+        let accessEnabled = AXIsProcessTrustedWithOptions(options)
+        
+        if !accessEnabled {
+            print("Access not Enabled")
+        }
+        keyboardTracker.monintorEvent()
     }
     
     @objc func printStuff() {
-        print("Testing menubar button")
+        keyboardTracker.printKeypresses()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {

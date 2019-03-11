@@ -14,6 +14,7 @@
 		8CCB4736223708E50038CDFC /* KeyboardActivityTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4735223708E50038CDFC /* KeyboardActivityTrackerTests.swift */; };
 		8CCB4741223708E50038CDFC /* KeyboardActivityTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4740223708E50038CDFC /* KeyboardActivityTrackerUITests.swift */; };
 		8CCB474F22370B0A0038CDFC /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB474E22370B0A0038CDFC /* EventMonitor.swift */; };
+		8CCB475222371CE40038CDFC /* KeyboardTracker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB475122371CE40038CDFC /* KeyboardTracker.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		8CCB4740223708E50038CDFC /* KeyboardActivityTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActivityTrackerUITests.swift; sourceTree = "<group>"; };
 		8CCB4742223708E50038CDFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8CCB474E22370B0A0038CDFC /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
+		8CCB475122371CE40038CDFC /* KeyboardTracker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardTracker.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				8CCB4721223708E40038CDFC /* AppDelegate.swift */,
 				8CCB474E22370B0A0038CDFC /* EventMonitor.swift */,
+				8CCB475122371CE40038CDFC /* KeyboardTracker.swift */,
 				8CCB4726223708E50038CDFC /* Assets.xcassets */,
 				8CCB4728223708E50038CDFC /* MainMenu.xib */,
 				8CCB472B223708E50038CDFC /* Info.plist */,
@@ -271,6 +274,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8CCB474F22370B0A0038CDFC /* EventMonitor.swift in Sources */,
+				8CCB475222371CE40038CDFC /* KeyboardTracker.swift in Sources */,
 				8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */,
 				8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */,
 			);
