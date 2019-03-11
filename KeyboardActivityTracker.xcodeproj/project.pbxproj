@@ -13,6 +13,7 @@
 		8CCB472A223708E50038CDFC /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB4728223708E50038CDFC /* MainMenu.xib */; };
 		8CCB4736223708E50038CDFC /* KeyboardActivityTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4735223708E50038CDFC /* KeyboardActivityTrackerTests.swift */; };
 		8CCB4741223708E50038CDFC /* KeyboardActivityTrackerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4740223708E50038CDFC /* KeyboardActivityTrackerUITests.swift */; };
+		8CCB474F22370B0A0038CDFC /* EventMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB474E22370B0A0038CDFC /* EventMonitor.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		8CCB473C223708E50038CDFC /* KeyboardActivityTrackerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = KeyboardActivityTrackerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CCB4740223708E50038CDFC /* KeyboardActivityTrackerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActivityTrackerUITests.swift; sourceTree = "<group>"; };
 		8CCB4742223708E50038CDFC /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8CCB474E22370B0A0038CDFC /* EventMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventMonitor.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				8CCB472B223708E50038CDFC /* Info.plist */,
 				8CCB472C223708E50038CDFC /* KeyboardActivityTracker.entitlements */,
 				8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */,
+				8CCB474E22370B0A0038CDFC /* EventMonitor.swift */,
 			);
 			path = KeyboardActivityTracker;
 			sourceTree = "<group>";
@@ -259,6 +262,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8CCB474F22370B0A0038CDFC /* EventMonitor.swift in Sources */,
 				8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */,
 				8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */,
 			);
