@@ -87,6 +87,43 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C26C45C2238260B00013F89 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB475122371CE40038CDFC /* KeyboardTracker.swift */,
+				8CCB474E22370B0A0038CDFC /* EventMonitor.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C26C45D2238262100013F89 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB475B22373FD50038CDFC /* KeyboardActivityView.swift */,
+				8CCB4759223737550038CDFC /* DailyKeyCountView.swift */,
+				8CCB4728223708E50038CDFC /* MainMenu.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8C26C45E2238264800013F89 /* Core Data Files */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB4754223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift */,
+				8CCB4753223720EF0038CDFC /* KeyPresses+CoreDataClass.swift */,
+				8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */,
+			);
+			path = "Core Data Files";
+			sourceTree = "<group>";
+		};
+		8C26C45F2238266C00013F89 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				8CCB4757223729690038CDFC /* StatusMenuController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
 		8CCB4715223708E40038CDFC = {
 			isa = PBXGroup;
 			children = (
@@ -109,19 +146,14 @@
 		8CCB4720223708E40038CDFC /* KeyboardActivityTracker */ = {
 			isa = PBXGroup;
 			children = (
-				8CCB4753223720EF0038CDFC /* KeyPresses+CoreDataClass.swift */,
-				8CCB4754223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift */,
+				8C26C45F2238266C00013F89 /* ViewControllers */,
+				8C26C45E2238264800013F89 /* Core Data Files */,
+				8C26C45D2238262100013F89 /* Views */,
+				8C26C45C2238260B00013F89 /* Models */,
 				8CCB4721223708E40038CDFC /* AppDelegate.swift */,
-				8CCB4757223729690038CDFC /* StatusMenuController.swift */,
-				8CCB474E22370B0A0038CDFC /* EventMonitor.swift */,
-				8CCB475122371CE40038CDFC /* KeyboardTracker.swift */,
-				8CCB4759223737550038CDFC /* DailyKeyCountView.swift */,
-				8CCB475B22373FD50038CDFC /* KeyboardActivityView.swift */,
 				8CCB4726223708E50038CDFC /* Assets.xcassets */,
-				8CCB4728223708E50038CDFC /* MainMenu.xib */,
 				8CCB472B223708E50038CDFC /* Info.plist */,
 				8CCB472C223708E50038CDFC /* KeyboardActivityTracker.entitlements */,
-				8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */,
 			);
 			path = KeyboardActivityTracker;
 			sourceTree = "<group>";
