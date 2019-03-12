@@ -24,9 +24,10 @@ class StatusMenuController: NSObject, DetailsWindowDelegate {
     
     func updateDetails() {
         let defaults = UserDefaults.standard
-        let target = defaults.integer(forKey: "target") 
+        let target = defaults.integer(forKey: "target")
         activityView.totalKeycount = target
     }
+    
     
     override func awakeFromNib() {
         if let button = statusItem.button {
@@ -43,14 +44,14 @@ class StatusMenuController: NSObject, DetailsWindowDelegate {
         keyboardTracker.monintorEvent()
         keyStrokeMenuItem = statusMenu.item(withTitle: "Key Strokes")
         keyStrokeMenuItem.view = dailyKeyCountView
-        activityView.totalKeycount = 2000
+        self.updateDetails()
         detailsWindow = DetailsViewController()
         detailsWindow?.delegate = self
         self.printKeyStrokes()
+        activityView.loadBars()
     }
         
     @IBAction func detailsClicked(_ sender: Any) {
-        print("Details Clicked")
         detailsWindow?.showWindow(nil)
     }
     @IBAction func quitClicked(_ sender: NSMenuItem) {

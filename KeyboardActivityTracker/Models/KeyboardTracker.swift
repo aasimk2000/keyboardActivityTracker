@@ -43,7 +43,6 @@ class KeyboardTracker: NSObject {
     
     
     func doSomething() {
-        print("Keystroke Ended")
         let delegate = NSApp.delegate as? AppDelegate
 
         
