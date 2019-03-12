@@ -27,12 +27,11 @@ class KeyboardActivityView: NSView {
     }
     
     var arcWidth:CGFloat = 35.0
-    var arcColor = NSColor.blue
-    var arcBackgroundColor = NSColor.black
+    var arcColor = NSColor(calibratedRed: 235/255, green: 23/255, blue: 0, alpha: 1)
+    var arcBackgroundColor = NSColor(calibratedRed: 50/255, green: 50/255, blue: 50/255, alpha: 1)
     
     func computeEndArc() {
         endArc = CGFloat(Double((currentKeycount ?? 0))/Double(totalKeycount ?? 1))
-        print(endArc)
     }
     
     override func draw(_ rect: NSRect) {

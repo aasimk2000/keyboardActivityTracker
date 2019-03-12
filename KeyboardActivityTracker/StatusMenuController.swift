@@ -33,6 +33,7 @@ class StatusMenuController: NSObject {
         keyStrokeMenuItem = statusMenu.item(withTitle: "Key Strokes")
         keyStrokeMenuItem.view = dailyKeyCountView
         activityView.totalKeycount = 2000
+        self.printKeyStrokes()
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
