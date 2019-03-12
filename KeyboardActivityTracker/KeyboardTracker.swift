@@ -45,6 +45,7 @@ class KeyboardTracker: NSObject {
     func doSomething() {
         print("Keystroke Ended")
         let delegate = NSApp.delegate as? AppDelegate
+
         
         if let context = delegate?.persistentContainer.viewContext {
             let keypresses = NSEntityDescription.insertNewObject(forEntityName: "KeyPresses", into: context) as! KeyPresses
@@ -60,5 +61,25 @@ class KeyboardTracker: NSObject {
         }
     }
     
+    func fetchData(predicate: NSPredicate) -> Int{
+        let delegate = NSApp.delegate as? AppDelegate
+
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "KeyPresses")
+        request.predicate = predicate
+        request.returnsObjectsAsFaults = false
+        var totalKeyStrokes = 0
+        if let context = delegate?.persistentContainer.viewContext {
+            do {
+                let result = try context.fetch(request)
+                for data in result as! [KeyPresses] {
+                    totalKeyStrokes += Int(data.numKeyStrokes)
+                }
+            } catch {
+                fatalError("Failure to read context: \(error)")
+            }
+        }
+        
+        return totalKeyStrokes + keyStrokeCount
+    }
 }
 

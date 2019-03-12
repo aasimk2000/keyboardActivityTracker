@@ -36,5 +36,21 @@ class StatusMenuController: NSObject {
     
     @IBAction func printKeyStrokes(_ sender: NSMenuItem) {
         keyboardTracker.printKeypresses()
+        
+        
+        var calendar = Calendar.current
+        calendar.timeZone = NSTimeZone.local
+        
+        // Get today's beginning & end
+        let dateFrom = calendar.startOfDay(for: Date())
+        let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
+        
+        let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)", dateFrom as NSDate, dateTo! as NSDate);
+
+        
+        if let keyStrokeMenuItem = self.statusMenu.item(withTitle: "Key Strokes") {
+            keyStrokeMenuItem.title = String(keyboardTracker.fetchData(predicate: predicate))
+        }
     }
 }
+
