@@ -10,6 +10,8 @@ import Cocoa
 
 class StatusMenuController: NSObject {
     @IBOutlet weak var statusMenu: NSMenu!
+    @IBOutlet weak var dailyKeyCountView: DailyKeyCountView!
+    var keyStrokeMenuItem: NSMenuItem!
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let keyboardTracker = KeyboardTracker()
@@ -19,7 +21,6 @@ class StatusMenuController: NSObject {
             button.title = "💩"
             statusItem.menu = statusMenu
         }
-        
         let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
         let accessEnabled = AXIsProcessTrustedWithOptions(options)
         
@@ -27,6 +28,8 @@ class StatusMenuController: NSObject {
             print("Access not Enabled")
         }
         keyboardTracker.monintorEvent()
+        keyStrokeMenuItem = statusMenu.item(withTitle: "Key Strokes")
+        keyStrokeMenuItem.view = dailyKeyCountView
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
@@ -47,10 +50,7 @@ class StatusMenuController: NSObject {
         
         let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)", dateFrom as NSDate, dateTo! as NSDate);
 
-        
-        if let keyStrokeMenuItem = self.statusMenu.item(withTitle: "Key Strokes") {
-            keyStrokeMenuItem.title = String(keyboardTracker.fetchData(predicate: predicate))
-        }
+        self.dailyKeyCountView.update(daily: keyboardTracker.fetchData(predicate: predicate), total: keyboardTracker.fetchData(predicate: NSPredicate(value: true)))
     }
 }
 

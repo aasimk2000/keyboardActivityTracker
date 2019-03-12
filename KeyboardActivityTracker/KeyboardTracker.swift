@@ -79,7 +79,7 @@ class KeyboardTracker: NSObject {
             }
         }
         
-        return totalKeyStrokes + keyStrokeCount
+        return totalKeyStrokes
     }
 }
 

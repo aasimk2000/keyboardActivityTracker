@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -10,7 +11,7 @@
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
-        <customObject id="-3" userLabel="Application"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="KeyboardActivityTracker" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
         <menu id="HYT-HH-2aK">
@@ -37,8 +38,42 @@
         </menu>
         <customObject id="omG-N5-JHd" customClass="StatusMenuController" customModule="KeyboardActivityTracker" customModuleProvider="target">
             <connections>
+                <outlet property="dailyKeyCountView" destination="GNY-qk-LaP" id="cqo-ll-s1Z"/>
                 <outlet property="statusMenu" destination="HYT-HH-2aK" id="S3y-HR-2Gc"/>
             </connections>
         </customObject>
+        <customView id="GNY-qk-LaP" customClass="DailyKeyCountView" customModule="KeyboardActivityTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="163" height="96"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eum-4F-j4J">
+                    <rect key="frame" x="19" y="59" width="125" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Daily Key Strokes: 0" id="lXb-Lo-XmQ">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tUZ-dO-5Ur">
+                    <rect key="frame" x="19" y="32" width="125" height="17"/>
+                    <textFieldCell key="cell" lineBreakMode="clipping" title="Total Key Strokes: 0" id="7KN-Z2-FWI">
+                        <font key="font" usesAppearanceFont="YES"/>
+                        <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                    </textFieldCell>
+                </textField>
+            </subviews>
+            <constraints>
+                <constraint firstItem="eum-4F-j4J" firstAttribute="top" secondItem="GNY-qk-LaP" secondAttribute="top" constant="20" id="1Gy-O9-Tn1"/>
+                <constraint firstItem="tUZ-dO-5Ur" firstAttribute="top" secondItem="eum-4F-j4J" secondAttribute="bottom" constant="10" id="IZM-cc-F25"/>
+                <constraint firstItem="tUZ-dO-5Ur" firstAttribute="centerX" secondItem="GNY-qk-LaP" secondAttribute="centerX" id="Jv1-zG-2LO"/>
+                <constraint firstItem="eum-4F-j4J" firstAttribute="centerX" secondItem="GNY-qk-LaP" secondAttribute="centerX" id="xcX-x4-JTK"/>
+            </constraints>
+            <connections>
+                <outlet property="dailyKeyStrokes" destination="eum-4F-j4J" id="862-7Z-7DF"/>
+                <outlet property="totalKeyStrokes" destination="tUZ-dO-5Ur" id="VRb-S1-5hs"/>
+            </connections>
+            <point key="canvasLocation" x="138.5" y="154"/>
+        </customView>
     </objects>
 </document>
