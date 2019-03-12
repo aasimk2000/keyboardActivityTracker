@@ -20,6 +20,13 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
                 <menuItem isSeparatorItem="YES" id="JEs-p6-yXJ"/>
+                <menuItem title="More Details" id="Y7a-Be-vgX">
+                    <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="detailsClicked:" target="omG-N5-JHd" id="S7N-tx-3X7"/>
+                    </connections>
+                </menuItem>
+                <menuItem isSeparatorItem="YES" id="ttk-z5-UYp"/>
                 <menuItem title="Quit" id="O3k-UN-WcO">
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <connections>

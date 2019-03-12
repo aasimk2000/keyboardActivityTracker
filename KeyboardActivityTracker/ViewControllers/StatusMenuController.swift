@@ -8,7 +8,11 @@
 
 import Cocoa
 
-class StatusMenuController: NSObject {
+class StatusMenuController: NSObject, DetailsWindowDelegate {
+    func detailsDidUpdate() {
+        updateDetails()
+    }
+    
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var dailyKeyCountView: DailyKeyCountView!
     var keyStrokeMenuItem: NSMenuItem!
@@ -16,6 +20,13 @@ class StatusMenuController: NSObject {
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let keyboardTracker = KeyboardTracker()
     @IBOutlet weak var activityView: KeyboardActivityView!
+    var detailsWindow: DetailsViewController?
+    
+    func updateDetails() {
+        let defaults = UserDefaults.standard
+        let target = defaults.integer(forKey: "target") 
+        activityView.totalKeycount = target
+    }
     
     override func awakeFromNib() {
         if let button = statusItem.button {
@@ -33,12 +44,17 @@ class StatusMenuController: NSObject {
         keyStrokeMenuItem = statusMenu.item(withTitle: "Key Strokes")
         keyStrokeMenuItem.view = dailyKeyCountView
         activityView.totalKeycount = 2000
+        detailsWindow = DetailsViewController()
+        detailsWindow?.delegate = self
         self.printKeyStrokes()
     }
-    
+        
+    @IBAction func detailsClicked(_ sender: Any) {
+        print("Details Clicked")
+        detailsWindow?.showWindow(nil)
+    }
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
-
     }
     
     func printKeyStrokes() {

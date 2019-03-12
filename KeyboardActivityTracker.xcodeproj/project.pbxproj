@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8CBBAA6922383B1D00961ED7 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBAA6722383B1D00961ED7 /* DetailsViewController.swift */; };
+		8CBBAA6A22383B1D00961ED7 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CBBAA6822383B1D00961ED7 /* DetailsViewController.xib */; };
 		8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4721223708E40038CDFC /* AppDelegate.swift */; };
 		8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */; };
 		8CCB4727223708E50038CDFC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8CCB4726223708E50038CDFC /* Assets.xcassets */; };
@@ -40,6 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8CBBAA6722383B1D00961ED7 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
+		8CBBAA6822383B1D00961ED7 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		8CCB471E223708E40038CDFC /* KeyboardActivityTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardActivityTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CCB4721223708E40038CDFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		8CCB4724223708E40038CDFC /* KeyboardActivityTracker.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = KeyboardActivityTracker.xcdatamodel; sourceTree = "<group>"; };
@@ -120,6 +124,8 @@
 			isa = PBXGroup;
 			children = (
 				8CCB4757223729690038CDFC /* StatusMenuController.swift */,
+				8CBBAA6722383B1D00961ED7 /* DetailsViewController.swift */,
+				8CBBAA6822383B1D00961ED7 /* DetailsViewController.xib */,
 			);
 			path = ViewControllers;
 			sourceTree = "<group>";
@@ -296,6 +302,7 @@
 			files = (
 				8CCB4727223708E50038CDFC /* Assets.xcassets in Resources */,
 				8CCB472A223708E50038CDFC /* MainMenu.xib in Resources */,
+				8CBBAA6A22383B1D00961ED7 /* DetailsViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,6 +336,7 @@
 				8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */,
 				8CCB4758223729690038CDFC /* StatusMenuController.swift in Sources */,
 				8CCB4756223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift in Sources */,
+				8CBBAA6922383B1D00961ED7 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
