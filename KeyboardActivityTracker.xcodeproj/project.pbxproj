@@ -19,6 +19,7 @@
 		8CCB4756223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4754223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift */; };
 		8CCB4758223729690038CDFC /* StatusMenuController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4757223729690038CDFC /* StatusMenuController.swift */; };
 		8CCB475A223737550038CDFC /* DailyKeyCountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4759223737550038CDFC /* DailyKeyCountView.swift */; };
+		8CCB475C22373FD50038CDFC /* KeyboardActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB475B22373FD50038CDFC /* KeyboardActivityView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +59,7 @@
 		8CCB4754223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "KeyPresses+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		8CCB4757223729690038CDFC /* StatusMenuController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusMenuController.swift; sourceTree = "<group>"; };
 		8CCB4759223737550038CDFC /* DailyKeyCountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyKeyCountView.swift; sourceTree = "<group>"; };
+		8CCB475B22373FD50038CDFC /* KeyboardActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardActivityView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				8CCB474E22370B0A0038CDFC /* EventMonitor.swift */,
 				8CCB475122371CE40038CDFC /* KeyboardTracker.swift */,
 				8CCB4759223737550038CDFC /* DailyKeyCountView.swift */,
+				8CCB475B22373FD50038CDFC /* KeyboardActivityView.swift */,
 				8CCB4726223708E50038CDFC /* Assets.xcassets */,
 				8CCB4728223708E50038CDFC /* MainMenu.xib */,
 				8CCB472B223708E50038CDFC /* Info.plist */,
@@ -290,6 +293,7 @@
 				8CCB475A223737550038CDFC /* DailyKeyCountView.swift in Sources */,
 				8CCB475222371CE40038CDFC /* KeyboardTracker.swift in Sources */,
 				8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */,
+				8CCB475C22373FD50038CDFC /* KeyboardActivityView.swift in Sources */,
 				8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */,
 				8CCB4758223729690038CDFC /* StatusMenuController.swift in Sources */,
 				8CCB4756223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift in Sources */,

@@ -15,6 +15,7 @@ class StatusMenuController: NSObject {
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let keyboardTracker = KeyboardTracker()
+    @IBOutlet weak var activityView: KeyboardActivityView!
     
     override func awakeFromNib() {
         if let button = statusItem.button {
@@ -27,9 +28,11 @@ class StatusMenuController: NSObject {
         if !accessEnabled {
             print("Access not Enabled")
         }
+        keyboardTracker.statusMenuController = self
         keyboardTracker.monintorEvent()
         keyStrokeMenuItem = statusMenu.item(withTitle: "Key Strokes")
         keyStrokeMenuItem.view = dailyKeyCountView
+        activityView.totalKeycount = 2000
     }
     
     @IBAction func quitClicked(_ sender: NSMenuItem) {
@@ -37,10 +40,7 @@ class StatusMenuController: NSObject {
 
     }
     
-    @IBAction func printKeyStrokes(_ sender: NSMenuItem) {
-        keyboardTracker.printKeypresses()
-        
-        
+    func printKeyStrokes() {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
         
@@ -49,8 +49,11 @@ class StatusMenuController: NSObject {
         let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
         
         let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)", dateFrom as NSDate, dateTo! as NSDate);
+        
+        let daily = keyboardTracker.fetchData(predicate: predicate)
+        activityView.currentKeycount = daily
 
-        self.dailyKeyCountView.update(daily: keyboardTracker.fetchData(predicate: predicate), total: keyboardTracker.fetchData(predicate: NSPredicate(value: true)))
+        self.dailyKeyCountView.update(daily: daily, total: keyboardTracker.fetchData(predicate: NSPredicate(value: true)))
     }
 }
 

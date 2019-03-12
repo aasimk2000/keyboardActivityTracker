@@ -15,8 +15,8 @@ class DailyKeyCountView: NSView {
     
     func update(daily: Int, total: Int) {
         DispatchQueue.main.async {
-            self.dailyKeyStrokes.stringValue = "Daily Key Count: \(daily)"
-            self.totalKeyStrokes.stringValue = "Total Key Count: \(total)"
+            self.dailyKeyStrokes.stringValue = "\(daily)"
+            self.totalKeyStrokes.stringValue = "\(total)"
         }
     }
     override func draw(_ dirtyRect: NSRect) {
