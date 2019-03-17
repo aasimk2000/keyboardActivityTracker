@@ -60,6 +60,22 @@ class KeyboardTracker: NSObject {
         }
     }
     
+    func fetchStatsArray() -> [KeyPresses] {
+        var stats = [KeyPresses]()
+        let delegate = NSApp.delegate as? AppDelegate
+        
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "KeyPresses")
+        if let context = delegate?.persistentContainer.viewContext {
+            do {
+                stats = try context.fetch(request) as! [KeyPresses]
+            } catch {
+                fatalError("Failure to read context: \(error)")
+            }
+        }
+        
+        return stats
+    }
+    
     func fetchData(predicate: NSPredicate) -> Int{
         let delegate = NSApp.delegate as? AppDelegate
 
@@ -79,6 +95,22 @@ class KeyboardTracker: NSObject {
         }
         
         return totalKeyStrokes
+    }
+    
+    func createExportString() -> String {
+        let fetchedStatsArray = fetchStatsArray()
+        
+        var export = "startTime, endTime, number of keystrokes\n"
+        for (index, stat) in fetchedStatsArray.enumerated() {
+            if index < fetchedStatsArray.count - 1 {
+                let startString = "\(stat.startTime!)"
+                let endString = "\(stat.endTime!)"
+                let numKeyStrokes = stat.numKeyStrokes
+                export += startString + "," + endString + ",\(numKeyStrokes)\n"
+            }
+        }
+        
+        return export
     }
 }
 

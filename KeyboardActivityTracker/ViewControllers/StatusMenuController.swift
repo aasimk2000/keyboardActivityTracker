@@ -73,5 +73,9 @@ class StatusMenuController: NSObject, DetailsWindowDelegate {
 
         self.dailyKeyCountView.update(daily: daily, total: keyboardTracker.fetchData(predicate: NSPredicate(value: true)))
     }
+    
+    func exportString() -> String {
+        return keyboardTracker.createExportString()
+    }
 }
 

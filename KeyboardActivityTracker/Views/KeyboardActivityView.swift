@@ -40,20 +40,20 @@ class KeyboardActivityView: OGCircularBarView {
     
      func loadBars() {
         //let pink = NSColor(calibratedRed: 1, green: 0.059, blue: 0.575, alpha: 1)
-        let blue = NSColor(calibratedRed: 20/255, green: 160/255, blue: 255, alpha: 1)
+        let ringColor = NSColor.controlAccentColor
         //let green = NSColor(calibratedRed: 0.321, green: 0.95, blue: 0.2, alpha: 1)
         
         // Normal Backgrounds
         
         //self.addBarBackground(startAngle: 90, endAngle: -270, radius: 100, width: 15, color: pink.withAlphaComponent(0.1))
         //self.addBarBackground(startAngle: 90, endAngle: -270, radius: 120, width: 15, color: blue.withAlphaComponent(0.1))
-        self.addBarBackground(startAngle: 90, endAngle: -270, radius: 75, width: 10, color: blue.withAlphaComponent(0.1))
+        self.addBarBackground(startAngle: 90, endAngle: -270, radius: 75, width: 10, color: ringColor.withAlphaComponent(0.1))
         
         // Normal Bars
         
         //self.addBar(startAngle: 90, endAngle: -270, progress: 0 , radius: 100, width: 15, color: pink, animationDuration: 0, glowOpacity: 0.4, glowRadius: 8)
         //self.addBar(startAngle: 90, endAngle: -270, progress: 0.45, radius: 120, width: 15, color: blue, animationDuration: 1.5, glowOpacity: 0.4, glowRadius: 8)
-        self.addBar(startAngle: 90, endAngle: -270, progress: CGFloat(progress), radius: 75, width: 10, color: blue, animationDuration: 1.5, glowOpacity: 0.4, glowRadius: 3)
+        self.addBar(startAngle: 90, endAngle: -270, progress: CGFloat(progress), radius: 75, width: 10, color: ringColor, animationDuration: 1.5, glowOpacity: 0.4, glowRadius: 3)
         
         // Half Bar Backgrounds
         

@@ -10,6 +10,8 @@ import Cocoa
 
 protocol DetailsWindowDelegate {
     func detailsDidUpdate()
+    
+    func exportString() -> String
 }
 
 class DetailsViewController: NSWindowController, NSWindowDelegate {
@@ -35,4 +37,28 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
         delegate?.detailsDidUpdate()
     }
     
+    @IBAction func exportClicked(_ sender: Any) {
+        let textToExport = delegate?.exportString()
+        if textToExport != "" {
+            let mySave = NSSavePanel()
+            mySave.allowedFileTypes = ["csv"]
+            mySave.isExtensionHidden = false
+            
+            mySave.begin { (result) -> Void in
+                
+                if result == NSApplication.ModalResponse.OK {
+                    let filename = mySave.url
+                    
+                    do {
+                        try textToExport?.write(to: filename!, atomically: true, encoding: String.Encoding.utf8)
+                    } catch {
+                        // failed to write file (bad permissions, bad filename etc.)
+                    }
+                    
+                } else {
+                    NSSound.beep()
+                }
+            }
+        }
+    }
 }

@@ -7,6 +7,7 @@
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="DetailsViewController" customModule="KeyboardActivityTracker" customModuleProvider="target">
             <connections>
+                <outlet property="exportClicked" destination="se5-gp-TjO" id="FfS-O9-luU"/>
                 <outlet property="targetText" destination="e9S-H4-coU" id="dHx-Lf-U5H"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
             </connections>
@@ -16,14 +17,14 @@
         <window title="Details" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" animationBehavior="default" id="F0z-JX-Cv5">
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-            <rect key="contentRect" x="196" y="240" width="159" height="63"/>
+            <rect key="contentRect" x="196" y="240" width="159" height="71"/>
             <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
-                <rect key="frame" x="0.0" y="0.0" width="159" height="63"/>
+                <rect key="frame" x="0.0" y="0.0" width="159" height="68"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="jLK-E4-132">
-                        <rect key="frame" x="8" y="23" width="74" height="17"/>
+                        <rect key="frame" x="8" y="36" width="74" height="22"/>
                         <textFieldCell key="cell" lineBreakMode="clipping" title="Daily target" id="lMr-W2-4Y0">
                             <font key="font" usesAppearanceFont="YES"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -31,28 +32,44 @@
                         </textFieldCell>
                     </textField>
                     <textField verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="e9S-H4-coU">
-                        <rect key="frame" x="85" y="21" width="64" height="22"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" title="2,000" drawsBackground="YES" id="iUP-uE-mIc">
+                        <rect key="frame" x="85" y="36" width="64" height="22"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" state="on" borderStyle="bezel" alignment="center" title="2,000" drawsBackground="YES" id="iUP-uE-mIc">
                             <numberFormatter key="formatter" formatterBehavior="default10_4" numberStyle="decimal" minimumIntegerDigits="1" maximumIntegerDigits="2000000000" maximumFractionDigits="3" id="pIe-Va-N3g"/>
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
                         </textFieldCell>
                     </textField>
+                    <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="wui-aj-Bpo">
+                        <rect key="frame" x="4" y="3" width="151" height="32"/>
+                        <buttonCell key="cell" type="push" title="Export Data" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="24f-4B-X1P">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                            <connections>
+                                <action selector="exportClicked:" target="-2" id="vcP-cg-ELJ"/>
+                            </connections>
+                        </buttonCell>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="e9S-H4-coU" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="Ck6-iR-4Yj"/>
-                    <constraint firstItem="e9S-H4-coU" firstAttribute="leading" secondItem="jLK-E4-132" secondAttribute="trailing" constant="5" id="I9p-1x-UHQ"/>
-                    <constraint firstItem="e9S-H4-coU" firstAttribute="leading" secondItem="jLK-E4-132" secondAttribute="trailing" constant="5" id="QgQ-l5-J7O"/>
-                    <constraint firstAttribute="trailing" secondItem="e9S-H4-coU" secondAttribute="trailing" constant="10" id="S7w-wf-gzE"/>
-                    <constraint firstItem="jLK-E4-132" firstAttribute="centerY" secondItem="se5-gp-TjO" secondAttribute="centerY" id="f8w-0V-aRH"/>
-                    <constraint firstItem="jLK-E4-132" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="stn-zL-QUc"/>
+                    <constraint firstItem="wui-aj-Bpo" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="8ky-SB-Oqb"/>
+                    <constraint firstItem="e9S-H4-coU" firstAttribute="leading" secondItem="jLK-E4-132" secondAttribute="trailing" constant="5" id="Etw-EE-GBO"/>
+                    <constraint firstItem="wui-aj-Bpo" firstAttribute="top" secondItem="e9S-H4-coU" secondAttribute="bottom" constant="5" id="KVK-2l-eie"/>
+                    <constraint firstAttribute="trailing" secondItem="wui-aj-Bpo" secondAttribute="trailing" constant="10" id="L7G-n9-SMl"/>
+                    <constraint firstItem="e9S-H4-coU" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="10" id="UH4-xh-n3A"/>
+                    <constraint firstAttribute="bottom" secondItem="wui-aj-Bpo" secondAttribute="bottom" constant="10" id="UoZ-Jm-X85"/>
+                    <constraint firstItem="e9S-H4-coU" firstAttribute="leading" secondItem="jLK-E4-132" secondAttribute="trailing" constant="5" id="aDv-Uf-FBE"/>
+                    <constraint firstItem="wui-aj-Bpo" firstAttribute="top" secondItem="jLK-E4-132" secondAttribute="bottom" constant="5" id="d50-NX-xfI"/>
+                    <constraint firstItem="jLK-E4-132" firstAttribute="top" secondItem="se5-gp-TjO" secondAttribute="top" constant="10" id="kAj-42-Fzt"/>
+                    <constraint firstItem="wui-aj-Bpo" firstAttribute="top" secondItem="jLK-E4-132" secondAttribute="bottom" constant="5" id="kRN-Vu-fb7"/>
+                    <constraint firstItem="jLK-E4-132" firstAttribute="leading" secondItem="se5-gp-TjO" secondAttribute="leading" constant="10" id="v9w-Qb-gKK"/>
+                    <constraint firstAttribute="trailing" secondItem="e9S-H4-coU" secondAttribute="trailing" constant="10" id="xPa-rc-55Y"/>
                 </constraints>
             </view>
             <connections>
                 <outlet property="delegate" destination="-2" id="0bl-1N-AYu"/>
             </connections>
-            <point key="canvasLocation" x="-21.5" y="43.5"/>
+            <point key="canvasLocation" x="14.5" y="164.5"/>
         </window>
     </objects>
 </document>
