@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import os
 
 protocol DetailsWindowDelegate {
     func detailsDidUpdate()
@@ -53,6 +54,11 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
                         try textToExport?.write(to: filename!, atomically: true, encoding: String.Encoding.utf8)
                     } catch {
                         // failed to write file (bad permissions, bad filename etc.)
+                        let alert = NSAlert()
+                        alert.messageText = "Invalid file permission"
+                        alert.informativeText = "Please check file permissions at destination"
+                        alert.addButton(withTitle: "OK")
+                        alert.runModal()
                     }
                     
                 } else {
