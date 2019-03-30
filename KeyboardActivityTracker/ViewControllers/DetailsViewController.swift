@@ -13,6 +13,8 @@ protocol DetailsWindowDelegate {
     func detailsDidUpdate()
     
     func exportString() -> String
+    
+    func getCurrentTarget() -> Int
 }
 
 class DetailsViewController: NSWindowController, NSWindowDelegate {
@@ -30,6 +32,7 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+        targetText.integerValue = delegate?.getCurrentTarget() ?? 2000
     }
     
     func windowWillClose(_ notification: Notification) {

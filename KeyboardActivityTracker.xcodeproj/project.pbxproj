@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C21F34B22500EDC00083FE4 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21F34A22500EDC00083FE4 /* GraphView.swift */; };
 		8CBBAA6922383B1D00961ED7 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBAA6722383B1D00961ED7 /* DetailsViewController.swift */; };
 		8CBBAA6A22383B1D00961ED7 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CBBAA6822383B1D00961ED7 /* DetailsViewController.xib */; };
 		8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4721223708E40038CDFC /* AppDelegate.swift */; };
@@ -42,6 +43,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		8C21F34A22500EDC00083FE4 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		8CBBAA6722383B1D00961ED7 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		8CBBAA6822383B1D00961ED7 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		8CCB471E223708E40038CDFC /* KeyboardActivityTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardActivityTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -105,6 +107,7 @@
 			children = (
 				8CCB475B22373FD50038CDFC /* KeyboardActivityView.swift */,
 				8CCB4759223737550038CDFC /* DailyKeyCountView.swift */,
+				8C21F34A22500EDC00083FE4 /* GraphView.swift */,
 				8CCB4728223708E50038CDFC /* MainMenu.xib */,
 			);
 			path = Views;
@@ -339,6 +342,7 @@
 				8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */,
 				8CCB4758223729690038CDFC /* StatusMenuController.swift in Sources */,
 				8CCB4756223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift in Sources */,
+				8C21F34B22500EDC00083FE4 /* GraphView.swift in Sources */,
 				8CBBAA6922383B1D00961ED7 /* DetailsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -80,5 +80,9 @@ extension StatusMenuController: DetailsWindowDelegate {
     func detailsDidUpdate() {
         updateDetails()
     }
+    
+    func getCurrentTarget() -> Int {
+        return activityView.totalKeycount ?? 2000
+    }
 }
 
