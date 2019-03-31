@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8C21F34B22500EDC00083FE4 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21F34A22500EDC00083FE4 /* GraphView.swift */; };
+		8C21F35322515CA100083FE4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21F35222515CA100083FE4 /* Collection.swift */; };
 		8CBBAA6922383B1D00961ED7 /* DetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBBAA6722383B1D00961ED7 /* DetailsViewController.swift */; };
 		8CBBAA6A22383B1D00961ED7 /* DetailsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CBBAA6822383B1D00961ED7 /* DetailsViewController.xib */; };
 		8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4721223708E40038CDFC /* AppDelegate.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		8C21F34A22500EDC00083FE4 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
+		8C21F35222515CA100083FE4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
 		8CBBAA6722383B1D00961ED7 /* DetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailsViewController.swift; sourceTree = "<group>"; };
 		8CBBAA6822383B1D00961ED7 /* DetailsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = DetailsViewController.xib; sourceTree = "<group>"; };
 		8CCB471E223708E40038CDFC /* KeyboardActivityTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardActivityTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -93,6 +95,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C21F35122515C9400083FE4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8C21F35222515CA100083FE4 /* Collection.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		8C26C45C2238260B00013F89 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -155,6 +165,7 @@
 		8CCB4720223708E40038CDFC /* KeyboardActivityTracker */ = {
 			isa = PBXGroup;
 			children = (
+				8C21F35122515C9400083FE4 /* Extensions */,
 				8C26C45F2238266C00013F89 /* ViewControllers */,
 				8C26C45E2238264800013F89 /* Core Data Files */,
 				8C26C45D2238262100013F89 /* Views */,
@@ -336,6 +347,7 @@
 				8CCB4755223720EF0038CDFC /* KeyPresses+CoreDataClass.swift in Sources */,
 				8CCB474F22370B0A0038CDFC /* EventMonitor.swift in Sources */,
 				8CCB475A223737550038CDFC /* DailyKeyCountView.swift in Sources */,
+				8C21F35322515CA100083FE4 /* Collection.swift in Sources */,
 				8CCB475222371CE40038CDFC /* KeyboardTracker.swift in Sources */,
 				8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */,
 				8CCB475C22373FD50038CDFC /* KeyboardActivityView.swift in Sources */,

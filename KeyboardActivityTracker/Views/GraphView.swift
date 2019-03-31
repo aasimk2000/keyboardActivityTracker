@@ -8,7 +8,7 @@
 
 import Cocoa
 
-class GraphView: NSView {
+@IBDesignable class GraphView: NSView {
     private struct Constants {
         static let cornerRadius: CGFloat = 8.0
         static let cornerRadiusSize = CGSize(width: cornerRadius, height: cornerRadius)
@@ -19,8 +19,8 @@ class GraphView: NSView {
         static let circleDiameter: CGFloat = 5.0
     }
     
-    var startColor = NSColor(calibratedRed: 250/255, green: 193/255, blue: 153/255, alpha: 1)
-    var endColor: NSColor = NSColor(calibratedRed: 252/255, green: 50/255, blue: 8/255, alpha: 1)
+    @IBInspectable var startColor = NSColor(calibratedRed: 250/255, green: 193/255, blue: 153/255, alpha: 1)
+    @IBInspectable var endColor: NSColor = NSColor(calibratedRed: 252/255, green: 50/255, blue: 8/255, alpha: 1)
     var graphPoints = [1, 1, 1, 1, 0, 0] {
         didSet {
             needsDisplay = true

@@ -27,6 +27,11 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
 
     @IBOutlet weak var targetText: NSTextField!
     @IBOutlet weak var activityGraph: GraphView!
+    @IBOutlet weak var averageKeystrokes: NSTextField!
+    @IBOutlet weak var maxKeystrokes: NSTextField!
+    @IBOutlet weak var daysOfWeekStackView: NSStackView!
+    
+    
     
     var delegate: DetailsWindowDelegate?
     override func windowDidLoad() {
@@ -38,6 +43,25 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
         NSApp.activate(ignoringOtherApps: true)
         targetText.integerValue = delegate?.getCurrentTarget() ?? 2000
         activityGraph.graphPoints = delegate?.getLastSevenDays() ?? [0,0,0,0,0,0,0]
+        maxKeystrokes.stringValue = "\(activityGraph.graphPoints.max() ?? 99)"
+        averageKeystrokes.stringValue = "\(Int(activityGraph.graphPoints.average))"
+        
+        let maxDayIndex = daysOfWeekStackView.arrangedSubviews.count - 1
+        
+        // 4 - setup date formatter and calendar
+        let today = Date()
+        let calendar = Calendar.current
+        
+        let formatter = DateFormatter()
+        formatter.setLocalizedDateFormatFromTemplate("EEEEE")
+
+        for i in 0...maxDayIndex {
+            if let date = calendar.date(byAdding: .day, value: -i, to: today),
+                let label = daysOfWeekStackView.arrangedSubviews[maxDayIndex - i] as? NSTextField {
+                label.stringValue = formatter.string(from: date)
+            }
+        }
+
     }
     
     func windowWillClose(_ notification: Notification) {
@@ -76,3 +100,4 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
         }
     }
 }
+
