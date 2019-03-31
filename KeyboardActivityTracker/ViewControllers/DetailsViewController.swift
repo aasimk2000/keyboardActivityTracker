@@ -15,6 +15,8 @@ protocol DetailsWindowDelegate {
     func exportString() -> String
     
     func getCurrentTarget() -> Int
+    
+    func getLastSevenDays() -> [Int]
 }
 
 class DetailsViewController: NSWindowController, NSWindowDelegate {
@@ -24,6 +26,8 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
     }
 
     @IBOutlet weak var targetText: NSTextField!
+    @IBOutlet weak var activityGraph: GraphView!
+    
     var delegate: DetailsWindowDelegate?
     override func windowDidLoad() {
         super.windowDidLoad()
@@ -33,6 +37,7 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
         self.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
         targetText.integerValue = delegate?.getCurrentTarget() ?? 2000
+        activityGraph.graphPoints = delegate?.getLastSevenDays() ?? [0,0,0,0,0,0,0]
     }
     
     func windowWillClose(_ notification: Notification) {

@@ -21,7 +21,12 @@ class GraphView: NSView {
     
     var startColor = NSColor(calibratedRed: 250/255, green: 193/255, blue: 153/255, alpha: 1)
     var endColor: NSColor = NSColor(calibratedRed: 252/255, green: 50/255, blue: 8/255, alpha: 1)
-    var graphPoints = [4, 2, 6, 4, 5, 8, 3]
+    var graphPoints = [1, 1, 1, 1, 0, 0] {
+        didSet {
+            needsDisplay = true
+        }
+    }
+    
     override var isFlipped: Bool {
         get {
             return true
@@ -64,7 +69,7 @@ class GraphView: NSView {
         let topBorder = Constants.topBorder
         let bottomBorder = Constants.bottomBorder
         let graphHeight = height - topBorder - bottomBorder
-        let maxValue = graphPoints.max()! // Change this to not forcibly unwrap
+        let maxValue = graphPoints.max() ?? 0 // Change this to not forcibly unwrap
         let columnYPoint = { (graphPoint: Int) -> CGFloat in
             let y = CGFloat(graphPoint) / CGFloat(maxValue) * graphHeight
             return graphHeight + topBorder - y
@@ -75,7 +80,7 @@ class GraphView: NSView {
         
         let graphPath = NSBezierPath()
         graphPath.move(to: CGPoint(x: columnXPoint(0),
-                                   y: columnYPoint(graphPoints.first!))) // Again change to not force unwrap
+                                   y: columnYPoint(graphPoints.first ?? 0))) // Again change to not force unwrap
         
         for (i, j) in graphPoints[1...].enumerated() {
             let nextPoint = CGPoint(x: columnXPoint(i+1), y: columnYPoint(j))

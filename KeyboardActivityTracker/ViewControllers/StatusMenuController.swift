@@ -84,5 +84,9 @@ extension StatusMenuController: DetailsWindowDelegate {
     func getCurrentTarget() -> Int {
         return activityView.totalKeycount ?? 2000
     }
+    
+    func getLastSevenDays() -> [Int] {
+        return keyboardTracker.getXDaysData(X: 7)
+    }
 }
 
