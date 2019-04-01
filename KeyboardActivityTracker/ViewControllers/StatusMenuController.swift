@@ -43,6 +43,8 @@ class StatusMenuController: NSObject {
         
     @IBAction func detailsClicked(_ sender: Any) {
         detailsWindow?.showWindow(nil)
+        detailsWindow?.window?.makeKeyAndOrderFront(nil)
+        NSApp.activate(ignoringOtherApps: true)
         detailsWindow?.updateGraph()
     }
     @IBAction func quitClicked(_ sender: NSMenuItem) {
