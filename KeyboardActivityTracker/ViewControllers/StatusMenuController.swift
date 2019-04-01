@@ -43,6 +43,7 @@ class StatusMenuController: NSObject {
         
     @IBAction func detailsClicked(_ sender: Any) {
         detailsWindow?.showWindow(nil)
+        detailsWindow?.updateGraph()
     }
     @IBAction func quitClicked(_ sender: NSMenuItem) {
         NSApplication.shared.terminate(self)
@@ -69,6 +70,7 @@ class StatusMenuController: NSObject {
 
         self.dailyKeyCountView.update(daily: daily, total: keyboardTracker.fetchData(predicate: NSPredicate(value: true)))
     }
+    
     
 }
 

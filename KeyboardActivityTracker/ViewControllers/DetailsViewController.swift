@@ -41,6 +41,16 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
         self.window?.center()
         self.window?.makeKeyAndOrderFront(nil)
         NSApp.activate(ignoringOtherApps: true)
+
+    }
+    
+    func windowWillClose(_ notification: Notification) {
+        let defaults = UserDefaults.standard
+        defaults.setValue(targetText.integerValue, forKey: "target")
+        delegate?.detailsDidUpdate()
+    }
+    
+    func updateGraph() {
         targetText.integerValue = delegate?.getCurrentTarget() ?? 2000
         activityGraph.graphPoints = delegate?.getLastSevenDays() ?? [0,0,0,0,0,0,0]
         maxKeystrokes.stringValue = "\(activityGraph.graphPoints.max() ?? 99)"
@@ -54,20 +64,13 @@ class DetailsViewController: NSWindowController, NSWindowDelegate {
         
         let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("EEEEE")
-
+        
         for i in 0...maxDayIndex {
             if let date = calendar.date(byAdding: .day, value: -i, to: today),
                 let label = daysOfWeekStackView.arrangedSubviews[maxDayIndex - i] as? NSTextField {
                 label.stringValue = formatter.string(from: date)
             }
         }
-
-    }
-    
-    func windowWillClose(_ notification: Notification) {
-        let defaults = UserDefaults.standard
-        defaults.setValue(targetText.integerValue, forKey: "target")
-        delegate?.detailsDidUpdate()
     }
     
     @IBAction func exportClicked(_ sender: Any) {
