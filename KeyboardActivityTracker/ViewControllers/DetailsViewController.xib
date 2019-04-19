@@ -26,7 +26,7 @@
             <value key="maxSize" type="size" width="482" height="334"/>
             <view key="contentView" wantsLayer="YES" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="482" height="334"/>
-                <autoresizingMask key="autoresizingMask"/>
+                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="w5r-Fz-Mhs" customClass="GraphView" customModule="KeyboardActivityTracker" customModuleProvider="target">
                         <rect key="frame" x="41" y="74" width="400" height="250"/>

@@ -22,11 +22,11 @@ class KeyboardTracker: NSObject {
             if let time = self?.lastEvent {
                 //print(currentTime.timeIntervalSince(time))
                 if (Double(currentTime.timeIntervalSince(time)) > 15) {
-                    self?.doSomething()
+                    self?.insertData()
                     self?.keyStrokeCount = 0
                     self?.lastEvent = currentTime
                     self?.firstEvent = currentTime
-                    self?.statusMenuController?.printKeyStrokes()
+//                    self?.statusMenuController?.printKeyStrokes()
                 } else {
                     self?.keyStrokeCount += 1
                     self?.lastEvent = currentTime
@@ -42,7 +42,7 @@ class KeyboardTracker: NSObject {
     }
     
     
-    func doSomething() {
+    func insertData() {
         let delegate = NSApp.delegate as? AppDelegate
 
         

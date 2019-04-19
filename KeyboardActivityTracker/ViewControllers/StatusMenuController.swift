@@ -8,39 +8,52 @@
 
 import Cocoa
 
-class StatusMenuController: NSObject {
+class StatusMenuController: NSObject, NSMenuDelegate {
     
     @IBOutlet weak var statusMenu: NSMenu!
     @IBOutlet weak var dailyKeyCountView: DailyKeyCountView!
+    @IBOutlet weak var activityView: KeyboardActivityView!
+    
     var keyStrokeMenuItem: NSMenuItem!
+    var detailsWindow: DetailsViewController?
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
     let keyboardTracker = KeyboardTracker()
-    @IBOutlet weak var activityView: KeyboardActivityView!
-    var detailsWindow: DetailsViewController?
     
     override func awakeFromNib() {
-        if let button = statusItem.button {
-            button.title = "💩"
-            statusItem.menu = statusMenu
-        }
+        setUpStatusItem()
         let options: NSDictionary = [kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String : true]
         let accessEnabled = AXIsProcessTrustedWithOptions(options)
         
         if !accessEnabled {
             print("Access not Enabled")
         }
-        keyboardTracker.statusMenuController = self
         keyboardTracker.monintorEvent()
-        keyStrokeMenuItem = statusMenu.item(withTitle: "Key Strokes")
-        keyStrokeMenuItem.view = dailyKeyCountView
         self.updateDetails()
-        detailsWindow = DetailsViewController()
-        detailsWindow?.delegate = self
         self.printKeyStrokes()
         activityView.loadBars()
     }
-        
+    
+    func setUpStatusItem() {
+        if let button = statusItem.button {
+            button.title = "💩"
+            statusItem.menu = statusMenu
+        }
+    }
+    
+    func setUpDelegates() {
+        keyboardTracker.statusMenuController = self
+        statusMenu.delegate = self
+        detailsWindow = DetailsViewController()
+        detailsWindow?.delegate = self
+        keyStrokeMenuItem.view = dailyKeyCountView
+        keyStrokeMenuItem = statusMenu.item(withTitle: "Key Strokes")
+    }
+    
+    func menuWillOpen(_ menu: NSMenu) {
+        printKeyStrokes()
+    }
+    
     @IBAction func detailsClicked(_ sender: Any) {
         detailsWindow?.showWindow(nil)
         detailsWindow?.window?.makeKeyAndOrderFront(nil)
@@ -69,8 +82,9 @@ class StatusMenuController: NSObject {
         
         let daily = keyboardTracker.fetchData(predicate: predicate)
         activityView.currentKeycount = daily
+        let current = keyboardTracker.keyStrokeCount
 
-        self.dailyKeyCountView.update(daily: daily, total: keyboardTracker.fetchData(predicate: NSPredicate(value: true)))
+        self.dailyKeyCountView.update(daily: daily+current, total: keyboardTracker.fetchData(predicate: NSPredicate(value: true)) + current)
     }
     
     
