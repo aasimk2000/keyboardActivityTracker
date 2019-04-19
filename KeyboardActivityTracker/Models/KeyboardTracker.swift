@@ -14,7 +14,6 @@ class KeyboardTracker: NSObject {
     var keyStrokeCount = 0
     var firstEvent: Date?
     var lastEvent: Date?
-    weak var statusMenuController: StatusMenuController?
     
     func monintorEvent() {
         eventMonitor = EventMonitor(mask: [.keyDown]) { [weak self] event in
@@ -32,7 +31,6 @@ class KeyboardTracker: NSObject {
                     self?.lastEvent = currentTime
                 }
             } else {
-                self?.statusMenuController?.printKeyStrokes()
                 self?.keyStrokeCount += 1
                 self?.lastEvent = currentTime
                 self?.firstEvent = currentTime

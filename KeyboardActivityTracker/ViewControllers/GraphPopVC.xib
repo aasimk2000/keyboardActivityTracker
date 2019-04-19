@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="GraphPopVC" customModule="KeyboardActivityTracker" customModuleProvider="target">
+            <connections>
+                <outlet property="averageKeyStrokes" destination="KPc-l3-KyY" id="Q3I-QA-zhc"/>
+                <outlet property="currentKeyPresses" destination="khf-Nf-hDr" id="KsN-Rx-XoI"/>
+                <outlet property="dayOfWeekStack" destination="R8E-qT-Ule" id="Wuk-gQ-bRw"/>
+                <outlet property="graphView" destination="6CO-wR-tQf" id="d0l-bp-gEr"/>
+                <outlet property="maxKeyStrokes" destination="vKH-RZ-Tzi" id="c72-KC-C1y"/>
+                <outlet property="view" destination="Hz6-mo-xeY" id="0bl-1N-x8E"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <customView id="Hz6-mo-xeY">
+            <rect key="frame" x="0.0" y="0.0" width="410" height="286"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+            <subviews>
+                <customView translatesAutoresizingMaskIntoConstraints="NO" id="6CO-wR-tQf" customClass="GraphView" customModule="KeyboardActivityTracker" customModuleProvider="target">
+                    <rect key="frame" x="5" y="31" width="400" height="250"/>
+                    <subviews>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="spW-Fu-Yfw">
+                            <rect key="frame" x="3" y="218" width="125" height="27"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Current Key Presses: " id="dLP-cN-xnc">
+                                <font key="font" size="16" name="AvenirNextCondensed-Medium"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="O5R-mB-fla">
+                            <rect key="frame" x="3" y="191" width="59" height="27"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="left" title="Average: " id="1lu-Je-2U4">
+                                <font key="font" size="16" name="AvenirNextCondensed-Medium"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="KPc-l3-KyY">
+                            <rect key="frame" x="63" y="191" width="35" height="27"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="2000" id="iQy-X0-vZV">
+                                <font key="font" size="16" name="AvenirNextCondensed-Medium"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="vKH-RZ-Tzi">
+                            <rect key="frame" x="381" y="185" width="20" height="27"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="99" id="mTF-8p-QG8">
+                                <font key="font" size="16" name="AvenirNextCondensed-Medium"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="PV3-lT-d5c">
+                            <rect key="frame" x="389" y="47" width="12" height="27"/>
+                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="right" title="0" id="lLk-6v-h6h">
+                                <font key="font" size="16" name="AvenirNextCondensed-Medium"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                        <stackView distribution="fillEqually" orientation="horizontal" alignment="top" spacing="44" horizontalStackHuggingPriority="249.99998474121094" verticalStackHuggingPriority="249.99998474121094" detachesHiddenViews="YES" translatesAutoresizingMaskIntoConstraints="NO" id="R8E-qT-Ule">
+                            <rect key="frame" x="23" y="20" width="355" height="29"/>
+                            <subviews>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="WWl-pD-BSL">
+                                    <rect key="frame" x="-2" y="0.0" width="17" height="29"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="iwV-1b-XBD">
+                                        <font key="font" size="17" name="AvenirNextCondensed-Regular"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="CJi-k2-0EM">
+                                    <rect key="frame" x="55" y="0.0" width="17" height="29"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="lJR-y4-snO">
+                                        <font key="font" size="17" name="AvenirNextCondensed-Regular"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="A1r-K3-Odg">
+                                    <rect key="frame" x="112" y="0.0" width="17" height="29"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="ult-tv-Oju">
+                                        <font key="font" size="17" name="AvenirNextCondensed-Regular"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="fae-9R-KbO">
+                                    <rect key="frame" x="169" y="0.0" width="17" height="29"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="VTx-e1-JbQ">
+                                        <font key="font" size="17" name="AvenirNextCondensed-Regular"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="yTw-P9-P1i">
+                                    <rect key="frame" x="226" y="0.0" width="17" height="29"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="Uy8-m6-EpS">
+                                        <font key="font" size="17" name="AvenirNextCondensed-Regular"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="FR6-Z2-BCZ">
+                                    <rect key="frame" x="283" y="0.0" width="17" height="29"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="iyd-MV-b0J">
+                                        <font key="font" size="17" name="AvenirNextCondensed-Regular"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                                <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="rQE-mM-9dZ">
+                                    <rect key="frame" x="340" y="0.0" width="17" height="29"/>
+                                    <textFieldCell key="cell" lineBreakMode="clipping" title="M" id="BhH-rO-7JM">
+                                        <font key="font" size="17" name="AvenirNextCondensed-Regular"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                        <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    </textFieldCell>
+                                </textField>
+                            </subviews>
+                            <visibilityPriorities>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                                <integer value="1000"/>
+                            </visibilityPriorities>
+                            <customSpacing>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                                <real value="3.4028234663852886e+38"/>
+                            </customSpacing>
+                        </stackView>
+                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="khf-Nf-hDr">
+                            <rect key="frame" x="129" y="218" width="35" height="27"/>
+                            <textFieldCell key="cell" lineBreakMode="truncatingTail" alignment="left" title="2000" id="gmc-w6-Az2">
+                                <font key="font" size="16" name="AvenirNextCondensed-Medium"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="0.84705882349999995" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </subviews>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="400" id="2K3-Gm-k8j"/>
+                        <constraint firstItem="khf-Nf-hDr" firstAttribute="centerY" secondItem="spW-Fu-Yfw" secondAttribute="centerY" id="8GE-rH-Mvh"/>
+                        <constraint firstAttribute="bottom" secondItem="PV3-lT-d5c" secondAttribute="bottom" constant="47" id="8YK-j6-Nj8"/>
+                        <constraint firstItem="spW-Fu-Yfw" firstAttribute="top" secondItem="6CO-wR-tQf" secondAttribute="top" constant="5" id="CzX-jx-tLS"/>
+                        <constraint firstItem="vKH-RZ-Tzi" firstAttribute="top" secondItem="6CO-wR-tQf" secondAttribute="top" constant="38" id="DQN-dV-JgB"/>
+                        <constraint firstAttribute="trailing" secondItem="vKH-RZ-Tzi" secondAttribute="trailing" constant="1" id="EmT-xa-6Ox"/>
+                        <constraint firstAttribute="bottom" secondItem="R8E-qT-Ule" secondAttribute="bottom" constant="20" id="FFh-7w-SFi"/>
+                        <constraint firstAttribute="trailing" secondItem="PV3-lT-d5c" secondAttribute="trailing" constant="1" id="G8i-wb-qHn"/>
+                        <constraint firstItem="spW-Fu-Yfw" firstAttribute="leading" secondItem="6CO-wR-tQf" secondAttribute="leading" constant="5" id="Q4J-an-1Ch"/>
+                        <constraint firstItem="KPc-l3-KyY" firstAttribute="leading" secondItem="O5R-mB-fla" secondAttribute="trailing" constant="5" id="d2y-c3-sWv"/>
+                        <constraint firstItem="KPc-l3-KyY" firstAttribute="centerY" secondItem="O5R-mB-fla" secondAttribute="centerY" id="mo8-d3-cct"/>
+                        <constraint firstItem="khf-Nf-hDr" firstAttribute="leading" secondItem="spW-Fu-Yfw" secondAttribute="trailing" constant="5" id="q0J-Rg-xd9"/>
+                        <constraint firstItem="R8E-qT-Ule" firstAttribute="centerX" secondItem="6CO-wR-tQf" secondAttribute="centerX" id="qOe-Lh-sIo"/>
+                        <constraint firstItem="O5R-mB-fla" firstAttribute="top" secondItem="spW-Fu-Yfw" secondAttribute="bottom" id="sBc-dT-7Fg"/>
+                        <constraint firstAttribute="height" constant="250" id="t7u-pm-6gB"/>
+                        <constraint firstItem="O5R-mB-fla" firstAttribute="leading" secondItem="6CO-wR-tQf" secondAttribute="leading" constant="5" id="yfA-fb-bdA"/>
+                    </constraints>
+                </customView>
+                <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hoe-qY-YXZ">
+                    <rect key="frame" x="345" y="-2" width="66" height="32"/>
+                    <buttonCell key="cell" type="push" title="Quit" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="wOa-2t-fqR">
+                        <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                        <font key="font" metaFont="system"/>
+                    </buttonCell>
+                    <connections>
+                        <action selector="quitPressed:" target="-2" id="TcG-AF-wjx"/>
+                    </connections>
+                </button>
+            </subviews>
+            <constraints>
+                <constraint firstItem="hoe-qY-YXZ" firstAttribute="top" secondItem="6CO-wR-tQf" secondAttribute="bottom" constant="5" id="AYr-DS-rPb"/>
+                <constraint firstItem="6CO-wR-tQf" firstAttribute="top" secondItem="Hz6-mo-xeY" secondAttribute="top" constant="5" id="dR0-4V-GIa"/>
+                <constraint firstAttribute="trailing" secondItem="hoe-qY-YXZ" secondAttribute="trailing" constant="5" id="iKi-sG-WCE"/>
+                <constraint firstAttribute="bottom" secondItem="hoe-qY-YXZ" secondAttribute="bottom" constant="5" id="p6u-HJ-nkr"/>
+                <constraint firstItem="6CO-wR-tQf" firstAttribute="leading" secondItem="Hz6-mo-xeY" secondAttribute="leading" constant="5" id="tRs-TQ-fEB"/>
+            </constraints>
+            <point key="canvasLocation" x="132" y="179.5"/>
+        </customView>
+    </objects>
+</document>

@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14460.31"/>
-        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
     </dependencies>
     <objects>
         <customObject id="-2" userLabel="File's Owner" customClass="NSApplication">
@@ -14,93 +13,6 @@
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
         <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="KeyboardActivityTracker" customModuleProvider="target"/>
         <customObject id="YLy-65-1bz" customClass="NSFontManager"/>
-        <menu id="HYT-HH-2aK">
-            <items>
-                <menuItem title="Key Strokes" id="o5L-M1-f1u">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="JEs-p6-yXJ"/>
-                <menuItem title="More Details" id="Y7a-Be-vgX">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="detailsClicked:" target="omG-N5-JHd" id="S7N-tx-3X7"/>
-                    </connections>
-                </menuItem>
-                <menuItem isSeparatorItem="YES" id="ttk-z5-UYp"/>
-                <menuItem title="Quit" id="O3k-UN-WcO">
-                    <modifierMask key="keyEquivalentModifierMask"/>
-                    <connections>
-                        <action selector="quitClicked:" target="omG-N5-JHd" id="waL-mH-sxW"/>
-                    </connections>
-                </menuItem>
-            </items>
-            <point key="canvasLocation" x="-274" y="109"/>
-        </menu>
-        <customObject id="omG-N5-JHd" customClass="StatusMenuController" customModule="KeyboardActivityTracker" customModuleProvider="target">
-            <connections>
-                <outlet property="activityView" destination="6sc-7N-qtd" id="gpE-Fd-igk"/>
-                <outlet property="dailyKeyCountView" destination="GNY-qk-LaP" id="cqo-ll-s1Z"/>
-                <outlet property="statusMenu" destination="HYT-HH-2aK" id="S3y-HR-2Gc"/>
-            </connections>
-        </customObject>
-        <customView id="GNY-qk-LaP" customClass="DailyKeyCountView" customModule="KeyboardActivityTracker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="172" height="172"/>
-            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-            <subviews>
-                <customView translatesAutoresizingMaskIntoConstraints="NO" id="6sc-7N-qtd" customClass="KeyboardActivityView" customModule="KeyboardActivityTracker" customModuleProvider="target">
-                    <rect key="frame" x="5" y="5" width="162" height="162"/>
-                    <subviews>
-                        <box verticalHuggingPriority="750" fixedFrame="YES" boxType="separator" translatesAutoresizingMaskIntoConstraints="NO" id="bg7-Yw-nqq">
-                            <rect key="frame" x="43" y="76" width="75" height="9"/>
-                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
-                        </box>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="eum-4F-j4J">
-                            <rect key="frame" x="77" y="88" width="8" height="17"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="75" id="2eh-vp-6eh"/>
-                            </constraints>
-                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="lXb-Lo-XmQ">
-                                <font key="font" metaFont="systemSemibold" size="13"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                        <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="tUZ-dO-5Ur">
-                            <rect key="frame" x="77" y="58" width="8" height="17"/>
-                            <constraints>
-                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="75" id="hRA-eU-z6e"/>
-                            </constraints>
-                            <textFieldCell key="cell" lineBreakMode="clipping" alignment="center" id="7KN-Z2-FWI">
-                                <font key="font" metaFont="systemSemibold" size="13"/>
-                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                            </textFieldCell>
-                        </textField>
-                    </subviews>
-                    <constraints>
-                        <constraint firstItem="eum-4F-j4J" firstAttribute="centerY" secondItem="6sc-7N-qtd" secondAttribute="centerY" constant="-15" id="43N-LV-Pxd"/>
-                        <constraint firstAttribute="width" secondItem="6sc-7N-qtd" secondAttribute="height" multiplier="1:1" id="Ifm-kP-MIt"/>
-                        <constraint firstItem="eum-4F-j4J" firstAttribute="centerX" secondItem="6sc-7N-qtd" secondAttribute="centerX" id="KRp-Q7-GfI"/>
-                        <constraint firstItem="tUZ-dO-5Ur" firstAttribute="centerX" secondItem="6sc-7N-qtd" secondAttribute="centerX" id="ssQ-wq-rKX"/>
-                        <constraint firstItem="tUZ-dO-5Ur" firstAttribute="centerY" secondItem="6sc-7N-qtd" secondAttribute="centerY" constant="15" id="wEl-wq-qUx"/>
-                    </constraints>
-                </customView>
-            </subviews>
-            <constraints>
-                <constraint firstAttribute="bottom" secondItem="6sc-7N-qtd" secondAttribute="bottom" constant="5" id="8vZ-6g-5fd"/>
-                <constraint firstItem="6sc-7N-qtd" firstAttribute="leading" secondItem="GNY-qk-LaP" secondAttribute="leading" constant="5" id="DHX-Jc-p4M"/>
-                <constraint firstItem="6sc-7N-qtd" firstAttribute="centerX" secondItem="GNY-qk-LaP" secondAttribute="centerX" id="F3b-2O-pNT"/>
-                <constraint firstItem="6sc-7N-qtd" firstAttribute="centerY" secondItem="GNY-qk-LaP" secondAttribute="centerY" id="IXy-y5-zSh"/>
-                <constraint firstItem="6sc-7N-qtd" firstAttribute="centerY" secondItem="GNY-qk-LaP" secondAttribute="centerY" id="S84-nf-ixW"/>
-                <constraint firstItem="6sc-7N-qtd" firstAttribute="top" secondItem="GNY-qk-LaP" secondAttribute="top" constant="5" id="mzV-Au-AGx"/>
-                <constraint firstItem="6sc-7N-qtd" firstAttribute="centerX" secondItem="GNY-qk-LaP" secondAttribute="centerX" id="qHD-Zt-TfC"/>
-                <constraint firstAttribute="trailing" secondItem="6sc-7N-qtd" secondAttribute="trailing" constant="5" id="xVf-mS-jQs"/>
-            </constraints>
-            <connections>
-                <outlet property="dailyKeyStrokes" destination="eum-4F-j4J" id="862-7Z-7DF"/>
-                <outlet property="totalKeyStrokes" destination="tUZ-dO-5Ur" id="VRb-S1-5hs"/>
-            </connections>
-            <point key="canvasLocation" x="234" y="153"/>
-        </customView>
+        <customObject id="omG-N5-JHd" customClass="StatusMenuController" customModule="KeyboardActivityTracker" customModuleProvider="target"/>
     </objects>
 </document>

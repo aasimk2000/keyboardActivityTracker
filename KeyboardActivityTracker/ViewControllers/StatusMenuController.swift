@@ -8,16 +8,9 @@
 
 import Cocoa
 
-class StatusMenuController: NSObject, NSMenuDelegate {
+class StatusMenuController: NSObject {
     
-    @IBOutlet weak var statusMenu: NSMenu!
-    @IBOutlet weak var dailyKeyCountView: DailyKeyCountView!
-    @IBOutlet weak var activityView: KeyboardActivityView!
-    
-    var keyStrokeMenuItem: NSMenuItem!
-    var detailsWindow: DetailsViewController?
-    
-    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.squareLength)
+    let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     let keyboardTracker = KeyboardTracker()
     
     override func awakeFromNib() {
@@ -28,83 +21,44 @@ class StatusMenuController: NSObject, NSMenuDelegate {
         if !accessEnabled {
             print("Access not Enabled")
         }
+        
         keyboardTracker.monintorEvent()
-        self.updateDetails()
-        self.printKeyStrokes()
-        activityView.loadBars()
+        
+        // setUpDelegates()
     }
-    
+        
     func setUpStatusItem() {
         if let button = statusItem.button {
             button.title = "💩"
-            statusItem.menu = statusMenu
+            button.target = self
+            // statusItem.menu = statusMenu
         }
+        statusItem.button?.action = #selector(buttonPressed)
     }
     
-    func setUpDelegates() {
-        keyboardTracker.statusMenuController = self
-        statusMenu.delegate = self
-        detailsWindow = DetailsViewController()
-        detailsWindow?.delegate = self
-        keyStrokeMenuItem.view = dailyKeyCountView
-        keyStrokeMenuItem = statusMenu.item(withTitle: "Key Strokes")
-    }
-    
-    func menuWillOpen(_ menu: NSMenu) {
-        printKeyStrokes()
-    }
-    
-    @IBAction func detailsClicked(_ sender: Any) {
-        detailsWindow?.showWindow(nil)
-        detailsWindow?.window?.makeKeyAndOrderFront(nil)
-        NSApp.activate(ignoringOtherApps: true)
-        detailsWindow?.updateGraph()
-    }
-    @IBAction func quitClicked(_ sender: NSMenuItem) {
-        NSApplication.shared.terminate(self)
-    }
-    
-    func updateDetails() {
-        let defaults = UserDefaults.standard
-        let target = defaults.integer(forKey: "target")
-        activityView.totalKeycount = target
-    }
-    
-    func printKeyStrokes() {
-        var calendar = Calendar.current
-        calendar.timeZone = NSTimeZone.local
+    @objc func buttonPressed(_ sender: Any?) {
+        let vc = GraphPopVC(nibName: "GraphPopVC", bundle: nil)
+        vc.graphPopDelegate = self
+        guard let button = statusItem.button else {
+            fatalError("someting awful has happend")
+        }
         
-        // Get today's beginning & end
-        let dateFrom = calendar.startOfDay(for: Date())
-        let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
-        
-        let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)", dateFrom as NSDate, dateTo! as NSDate);
-        
-        let daily = keyboardTracker.fetchData(predicate: predicate)
-        activityView.currentKeycount = daily
-        let current = keyboardTracker.keyStrokeCount
-
-        self.dailyKeyCountView.update(daily: daily+current, total: keyboardTracker.fetchData(predicate: NSPredicate(value: true)) + current)
+        NSApplication.shared.activate(ignoringOtherApps: true)
+        let popover = NSPopover()
+        popover.behavior = .transient
+        popover.contentViewController = vc
+        popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)
     }
-    
-    
 }
 
-extension StatusMenuController: DetailsWindowDelegate {
-    func exportString() -> String {
-        return keyboardTracker.createExportString()
-    }
-
-    func detailsDidUpdate() {
-        updateDetails()
-    }
-    
-    func getCurrentTarget() -> Int {
-        return activityView.totalKeycount ?? 2000
-    }
-    
+extension StatusMenuController: graphPopDelegate {
     func getLastSevenDays() -> [Int] {
         return keyboardTracker.getXDaysData(X: 7)
     }
+    
+    func getCurrentKeyStroke() -> Int {
+        return keyboardTracker.keyStrokeCount
+    }
 }
+
 
