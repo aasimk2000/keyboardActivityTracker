@@ -8,7 +8,7 @@
 
 import Cocoa
 
-protocol graphPopDelegate {
+protocol graphPopDelegate: class {
     func getLastSevenDays() -> [Int]
     
     func getCurrentKeyStroke() -> Int
@@ -50,7 +50,7 @@ class GraphPopVC: NSViewController {
     @IBOutlet weak var currentKeyPresses: NSTextField!
     @IBOutlet weak var colorPopUpButton: NSPopUpButton!
     weak var statusMenuController: StatusMenuController? = nil
-    var graphPopDelegate: graphPopDelegate?
+    weak var graphPopDelegate: graphPopDelegate? = nil
     var color: GraphColor = .orange {
         didSet {
             print(color)
