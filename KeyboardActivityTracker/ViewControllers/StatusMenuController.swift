@@ -12,6 +12,7 @@ class StatusMenuController: NSObject {
     
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     let keyboardTracker = KeyboardTracker()
+    var color = GraphColor.orange
     
     override func awakeFromNib() {
         setUpStatusItem()
@@ -23,7 +24,9 @@ class StatusMenuController: NSObject {
         }
         
         keyboardTracker.monintorEvent()
-        
+        let defaults = UserDefaults.standard
+        let colorInt = defaults.integer(forKey: "color")
+        color = GraphColor(rawValue: colorInt) ?? GraphColor.orange
         // setUpDelegates()
     }
         

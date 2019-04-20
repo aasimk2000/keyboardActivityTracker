@@ -12,6 +12,33 @@ protocol graphPopDelegate {
     func getLastSevenDays() -> [Int]
     
     func getCurrentKeyStroke() -> Int
+    
+    var color: GraphColor { get set }
+}
+
+enum GraphColor: Int {
+    case orange
+    case blue
+    case purple
+    case kindablue
+    
+    var colors: (startColor: NSColor, endColor: NSColor) {
+        switch self {
+        case .orange:
+            return (NSColor(calibratedRed: 250/255, green: 193/255, blue: 153/255, alpha: 1),
+                    NSColor(calibratedRed: 252/255, green: 50/255, blue: 8/255, alpha: 1))
+        case .blue:
+            return (NSColor(calibratedRed: 94/255, green: 220/255, blue: 254/255, alpha: 1),
+                    NSColor(calibratedRed: 102/255, green: 166/255, blue: 255/255, alpha: 1))
+        case .purple:
+            return (NSColor(calibratedRed: 102/255, green: 126/255, blue: 234/255, alpha: 1),
+                    NSColor(calibratedRed: 118/255, green: 75/255, blue: 162/255, alpha: 1))
+        case .kindablue:
+            return (NSColor(calibratedRed: 48/255, green: 207/255, blue: 208/255, alpha: 1),
+                    NSColor(calibratedRed: 51/255, green: 8/255, blue: 103/255, alpha: 1))
+
+        }
+    }
 }
 
 class GraphPopVC: NSViewController {
@@ -21,11 +48,21 @@ class GraphPopVC: NSViewController {
     @IBOutlet weak var maxKeyStrokes: NSTextField!
     @IBOutlet weak var dayOfWeekStack: NSStackView!
     @IBOutlet weak var currentKeyPresses: NSTextField!
+    @IBOutlet weak var colorPopUpButton: NSPopUpButton!
+    weak var statusMenuController: StatusMenuController? = nil
     var graphPopDelegate: graphPopDelegate?
+    var color: GraphColor = .orange {
+        didSet {
+            print(color)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
+        // print(color)
+        colorPopUpButton.selectItem(at: graphPopDelegate?.color.rawValue ?? 0)
+        setGraph(color: graphPopDelegate?.color ?? .orange)
         graphView.graphPoints = graphPopDelegate?.getLastSevenDays() ?? [0,0,0,0,0,0,0]
         maxKeyStrokes.stringValue = "\(graphView.graphPoints.max() ?? 0)"
         averageKeyStrokes.stringValue = "\(Int(graphView.graphPoints.average))"
@@ -50,7 +87,19 @@ class GraphPopVC: NSViewController {
         }
     }
     
+    func setGraph(color : GraphColor) {
+        (graphView.startColor, graphView.endColor) = color.colors
+    }
+    
     @IBAction func quitPressed(_ sender: Any) {
         NSApplication.shared.terminate(self)
+    }
+    
+    @IBAction func popUpPressed(_ sender: Any) {
+        graphPopDelegate?.color = GraphColor(rawValue: colorPopUpButton.indexOfSelectedItem) ?? GraphColor.orange
+//        print(color)
+        setGraph(color: graphPopDelegate?.color ?? .orange)
+        let defaults = UserDefaults.standard
+        defaults.setValue(graphPopDelegate?.color.rawValue ?? 0, forKey: "color")        
     }
 }

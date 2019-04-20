@@ -19,8 +19,16 @@ import Cocoa
         static let circleDiameter: CGFloat = 5.0
     }
     
-    @IBInspectable var startColor = NSColor(calibratedRed: 250/255, green: 193/255, blue: 153/255, alpha: 1)
-    @IBInspectable var endColor: NSColor = NSColor(calibratedRed: 252/255, green: 50/255, blue: 8/255, alpha: 1)
+    @IBInspectable var startColor = NSColor(calibratedRed: 250/255, green: 193/255, blue: 153/255, alpha: 1) {
+        didSet {
+            needsDisplay = true
+        }
+    }
+    @IBInspectable var endColor: NSColor = NSColor(calibratedRed: 252/255, green: 50/255, blue: 8/255, alpha: 1) {
+        didSet {
+            needsDisplay = true
+        }
+    }
     var graphPoints = [1, 1, 1, 1, 0, 0] {
         didSet {
             needsDisplay = true
