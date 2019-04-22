@@ -43,12 +43,12 @@ enum GraphColor: Int {
 
 class GraphPopVC: NSViewController {
     
-    @IBOutlet weak var graphView: GraphView!
-    @IBOutlet weak var averageKeyStrokes: NSTextField!
-    @IBOutlet weak var maxKeyStrokes: NSTextField!
-    @IBOutlet weak var dayOfWeekStack: NSStackView!
-    @IBOutlet weak var currentKeyPresses: NSTextField!
-    @IBOutlet weak var colorPopUpButton: NSPopUpButton!
+    @IBOutlet var graphView: GraphView!
+    @IBOutlet var averageKeyStrokes: NSTextField!
+    @IBOutlet var maxKeyStrokes: NSTextField!
+    @IBOutlet var dayOfWeekStack: NSStackView!
+    @IBOutlet var currentKeyPresses: NSTextField!
+    @IBOutlet var colorPopUpButton: NSPopUpButton!
     weak var statusMenuController: StatusMenuController? = nil
     weak var graphPopDelegate: graphPopDelegate? = nil
     var color: GraphColor = .orange {

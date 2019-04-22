@@ -116,6 +116,7 @@ class KeyboardTracker: NSObject {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
         
+        
         for i in (0..<past).reversed() {
             let timeBefore = TimeInterval(-1 * i * 24 * 60 * 60)
             let startDate = Date(timeInterval: timeBefore, since: Date())
@@ -125,8 +126,10 @@ class KeyboardTracker: NSObject {
             
             let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)", dateFrom as NSDate, dateTo! as NSDate);
             
-            let daily = fetchData(predicate: predicate)
-            data.append(daily)
+            autoreleasepool {
+                let daily = fetchData(predicate: predicate)
+                data.append(daily)
+            }
         }
         return data
     }
