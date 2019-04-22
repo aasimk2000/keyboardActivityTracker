@@ -13,6 +13,15 @@ class StatusMenuController: NSObject {
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     let keyboardTracker = KeyboardTracker()
     var color = GraphColor.orange
+    let popover:NSPopover = {
+        let popover = NSPopover()
+        popover.behavior = .transient
+        return popover
+    }()
+    
+    deinit {
+        keyboardTracker.eventMonitor?.stop()
+    }
     
     override func awakeFromNib() {
         setUpStatusItem()
@@ -47,7 +56,6 @@ class StatusMenuController: NSObject {
         }
         
         NSApplication.shared.activate(ignoringOtherApps: true)
-        let popover = NSPopover()
         popover.behavior = .transient
         popover.contentViewController = vc
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)
