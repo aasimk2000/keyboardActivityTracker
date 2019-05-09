@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import Dispatch
 
 protocol graphPopDelegate: class {
     func getLastSevenDays() -> [Int]
@@ -51,38 +52,44 @@ class GraphPopVC: NSViewController {
     @IBOutlet var colorPopUpButton: NSPopUpButton!
     weak var statusMenuController: StatusMenuController? = nil
     weak var graphPopDelegate: graphPopDelegate? = nil
-    var color: GraphColor = .orange {
-        didSet {
-            print(color)
-        }
-    }
+    var color: GraphColor = .orange
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do view setup here.
         // print(color)
-        colorPopUpButton.selectItem(at: graphPopDelegate?.color.rawValue ?? 0)
-        setGraph(color: graphPopDelegate?.color ?? .orange)
-        graphView.graphPoints = graphPopDelegate?.getLastSevenDays() ?? [0,0,0,0,0,0,0]
-        maxKeyStrokes.stringValue = "\(graphView.graphPoints.max() ?? 0)"
-        averageKeyStrokes.stringValue = "\(Int(graphView.graphPoints.average))"
-        
-        let currentKeyStrokes:Int = (graphView.graphPoints.last ?? 0) + (graphPopDelegate?.getCurrentKeyStroke() ?? 0)
-        currentKeyPresses.stringValue = "\(currentKeyStrokes)"
-        
-        let maxDayIndex = dayOfWeekStack.arrangedSubviews.count - 1
-        
-        // 4 - setup date formatter and calendar
-        let today = Date()
-        let calendar = Calendar.current
-        
-        let formatter = DateFormatter()
-        formatter.setLocalizedDateFormatFromTemplate("EEEEE")
-        
-        for i in 0...maxDayIndex {
-            if let date = calendar.date(byAdding: .day, value: -i, to: today),
-                let label = dayOfWeekStack.arrangedSubviews[maxDayIndex - i] as? NSTextField {
-                label.stringValue = formatter.string(from: date)
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else { return }
+            let graphPoints = self.graphPopDelegate?.getLastSevenDays()
+            let average = graphPoints?.average ?? 0
+            let max = graphPoints?.max() ?? 0
+            let currentKeyStrokes = (graphPoints?.last ?? 0) + (self.graphPopDelegate?.getCurrentKeyStroke() ?? 0)
+            
+            let maxDayIndex = self.dayOfWeekStack.arrangedSubviews.count - 1
+            
+            // 4 - setup date formatter and calendar
+            let today = Date()
+            let calendar = Calendar.current
+            
+            let formatter = DateFormatter()
+            formatter.setLocalizedDateFormatFromTemplate("EEEEE")
+            
+            let color = self.graphPopDelegate?.color ?? .orange
+
+            DispatchQueue.main.async { [weak self] in
+                self?.colorPopUpButton.selectItem(at: color.rawValue)
+                self?.setGraph(color: color)
+                self?.graphView.graphPoints = graphPoints ?? [0,0,0,0,0,0,0]
+                self?.maxKeyStrokes.stringValue = "\(max)"
+                self?.averageKeyStrokes.stringValue = "\(Int(average))"
+                self?.currentKeyPresses.stringValue = "\(currentKeyStrokes)"
+                
+                for i in 0...maxDayIndex {
+                    if let date = calendar.date(byAdding: .day, value: -i, to: today),
+                        let label = self?.dayOfWeekStack.arrangedSubviews[maxDayIndex - i] as? NSTextField {
+                        label.stringValue = formatter.string(from: date)
+                    }
+                }
             }
         }
     }
