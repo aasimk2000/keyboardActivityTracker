@@ -41,71 +41,54 @@ class KeyboardTracker: NSObject {
     
     
     func insertData() {
-        let delegate = NSApp.delegate as? AppDelegate
-
+        guard let delegate = NSApp.delegate as? AppDelegate else { return }
         
-        if let context = delegate?.persistentContainer.viewContext {
-            let keypresses = NSEntityDescription.insertNewObject(forEntityName: "KeyPresses", into: context) as! KeyPresses
-            keypresses.numKeyStrokes = Int16(keyStrokeCount)
-            keypresses.startTime = firstEvent as NSDate?
-            keypresses.endTime = lastEvent as NSDate?
-            
-            do {
-                try context.save()
-            } catch {
-                fatalError("Failure to save context: \(error)")
-            }
-        }
+        let context = delegate.persistentContainer.viewContext
+        let keypresses = KeyPresses(context: context)
+        keypresses.numKeyStrokes = Int16(keyStrokeCount)
+        keypresses.startTime = firstEvent as NSDate?
+        keypresses.endTime = lastEvent as NSDate?
+        delegate.saveAction(nil)
     }
     
     func fetchStatsArray() -> [KeyPresses] {
         var stats = [KeyPresses]()
-        let delegate = NSApp.delegate as? AppDelegate
+        guard let delegate = NSApp.delegate as? AppDelegate else { return stats }
         
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "KeyPresses")
-        if let context = delegate?.persistentContainer.viewContext {
-            do {
-                stats = try context.fetch(request) as! [KeyPresses]
-            } catch {
-                fatalError("Failure to read context: \(error)")
-            }
+        let context = delegate.persistentContainer.viewContext
+        do {
+            stats = try context.fetch(KeyPresses.fetchRequest())
+        } catch {
+            fatalError("Failure to read context: \(error)")
         }
         
         return stats
     }
     
     func fetchData(predicate: NSPredicate) -> Int{
-        let delegate = NSApp.delegate as? AppDelegate
+        guard let delegate = NSApp.delegate as? AppDelegate else { return 0 }
 
-        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "KeyPresses")
+        let request: NSFetchRequest<KeyPresses> = KeyPresses.fetchRequest()
         request.predicate = predicate
         request.returnsObjectsAsFaults = false
-        var totalKeyStrokes = 0
-        if let context = delegate?.persistentContainer.viewContext {
-            do {
-                let result = try context.fetch(request)
-                for data in result as! [KeyPresses] {
-                    totalKeyStrokes += Int(data.numKeyStrokes)
-                }
-            } catch {
-                fatalError("Failure to read context: \(error)")
-            }
+        let context = delegate.persistentContainer.viewContext
+        do {
+            let result = try context.fetch(request)
+            return result.reduce(0) { $0 + Int($1.numKeyStrokes) }
+        } catch {
+            fatalError("Failure to read context: \(error)")
         }
-        
-        return totalKeyStrokes
     }
     
     func createExportString() -> String {
         let fetchedStatsArray = fetchStatsArray()
         
         var export = "startTime, endTime, number of keystrokes\n"
-        for (index, stat) in fetchedStatsArray.enumerated() {
-            if index < fetchedStatsArray.count - 1 {
-                let startString = "\(stat.startTime!)"
-                let endString = "\(stat.endTime!)"
-                let numKeyStrokes = stat.numKeyStrokes
-                export += startString + "," + endString + ",\(numKeyStrokes)\n"
-            }
+        for stat in fetchedStatsArray {
+            let startString = "\(stat.startTime!)"
+            let endString = "\(stat.endTime!)"
+            let numKeyStrokes = stat.numKeyStrokes
+            export += startString + "," + endString + ",\(numKeyStrokes)\n"
         }
         
         return export
