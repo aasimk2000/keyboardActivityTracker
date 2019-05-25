@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C21F34B22500EDC00083FE4 /* GraphView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21F34A22500EDC00083FE4 /* GraphView.swift */; };
 		8C21F35322515CA100083FE4 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C21F35222515CA100083FE4 /* Collection.swift */; };
+		8C7F35F3229946BA00864A26 /* GraphPopVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7F35F12299461400864A26 /* GraphPopVCTests.swift */; };
 		8CC779C9226FC2FA00481F4F /* GraphPopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CC779CB226FC2FA00481F4F /* GraphPopVC.xib */; };
 		8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4721223708E40038CDFC /* AppDelegate.swift */; };
 		8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */; };
@@ -44,6 +45,7 @@
 /* Begin PBXFileReference section */
 		8C21F34A22500EDC00083FE4 /* GraphView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphView.swift; sourceTree = "<group>"; };
 		8C21F35222515CA100083FE4 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
+		8C7F35F12299461400864A26 /* GraphPopVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPopVCTests.swift; sourceTree = "<group>"; };
 		8CC779CA226FC2FA00481F4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GraphPopVC.xib; sourceTree = "<group>"; };
 		8CCB471E223708E40038CDFC /* KeyboardActivityTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardActivityTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CCB4721223708E40038CDFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 			children = (
 				8CCB4735223708E50038CDFC /* KeyboardActivityTrackerTests.swift */,
 				8CCB4737223708E50038CDFC /* Info.plist */,
+				8C7F35F12299461400864A26 /* GraphPopVCTests.swift */,
 			);
 			path = KeyboardActivityTrackerTests;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C7F35F3229946BA00864A26 /* GraphPopVCTests.swift in Sources */,
 				8CCB4736223708E50038CDFC /* KeyboardActivityTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
