@@ -8,8 +8,10 @@
 
 import Cocoa
 import CoreData
+import os.log
 
 class KeyboardTracker: NSObject {
+    let log = OSLog(subsystem: "KeyboardActivityTracker", category: "KeyboardTracker")
     var eventMonitor: EventMonitor?
     var keyStrokeCount = 0
     var firstEvent: Date?
@@ -36,11 +38,13 @@ class KeyboardTracker: NSObject {
                 self?.firstEvent = currentTime
             }
         }
+        os_log("Started event monitor", log: log, type: .info)
         eventMonitor?.start()
     }
     
     
     func insertData() {
+        os_log("Begin keypress insertion into core data", log: log, type: .info)
         guard let delegate = NSApp.delegate as? AppDelegate else { return }
         
         let context = delegate.persistentContainer.viewContext
@@ -49,6 +53,7 @@ class KeyboardTracker: NSObject {
         keypresses.startTime = firstEvent as NSDate?
         keypresses.endTime = lastEvent as NSDate?
         delegate.saveAction(nil)
+        os_log("End core data insertion", log: log, type: .info)
     }
     
     func fetchStatsArray() -> [KeyPresses] {

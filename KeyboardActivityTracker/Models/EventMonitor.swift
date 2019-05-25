@@ -7,8 +7,10 @@
 //
 
 import Cocoa
+import os.log
 
 public class EventMonitor {
+    let log = OSLog(subsystem: "KeyboardActivityTracker", category: "EventMonitor")
     private var monitor: Any?
     private let mask: NSEvent.EventTypeMask
     private let handler: (NSEvent?) -> Void
@@ -23,11 +25,13 @@ public class EventMonitor {
     }
     
     public func start() {
+        os_log("Adding global event monitor", log: log, type: .info)
         monitor = NSEvent.addGlobalMonitorForEvents(matching: mask, handler: handler)
     }
     
     public func stop() {
         if monitor != nil {
+            os_log("Removing global event monitor", log: log, type: .info)
             NSEvent.removeMonitor(monitor!)
             monitor = nil
         }

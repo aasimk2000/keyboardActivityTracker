@@ -8,6 +8,7 @@
 
 import Cocoa
 import Dispatch
+import os.log
 
 protocol graphPopDelegate: class {
     func getLastSevenDays() -> [Int]
@@ -50,6 +51,8 @@ class GraphPopVC: NSViewController {
     @IBOutlet var dayOfWeekStack: NSStackView!
     @IBOutlet var currentKeyPresses: NSTextField!
     @IBOutlet var colorPopUpButton: NSPopUpButton!
+    
+    let log = OSLog(subsystem: "KeyboardActivityTracker", category: "GraphPopVC")
     weak var statusMenuController: StatusMenuController? = nil
     weak var graphPopDelegate: graphPopDelegate? = nil
     var color: GraphColor = .orange
@@ -89,12 +92,13 @@ class GraphPopVC: NSViewController {
     }
     
     @IBAction func quitPressed(_ sender: Any) {
+        os_log("Quit pressed", log: log, type: .info)
         NSApplication.shared.terminate(self)
     }
     
     @IBAction func popUpPressed(_ sender: Any) {
         graphPopDelegate?.color = GraphColor(rawValue: colorPopUpButton.indexOfSelectedItem) ?? GraphColor.orange
-//        print(color)
+        os_log("Setting color to %s", log: log, type: .info, "\(graphPopDelegate?.color ?? .orange)")
         setGraph(color: graphPopDelegate?.color ?? .orange)
         let defaults = UserDefaults.standard
         defaults.setValue(graphPopDelegate?.color.rawValue ?? 0, forKey: "color")        

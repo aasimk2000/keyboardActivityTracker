@@ -7,9 +7,11 @@
 //
 
 import Cocoa
+import os.log
 
 class StatusMenuController: NSObject {
     
+    let log = OSLog(subsystem: "KeyboardActivityTracker", category: "StatusMenuController")
     let statusItem = NSStatusBar.system.statusItem(withLength:NSStatusItem.variableLength)
     let keyboardTracker = KeyboardTracker()
     var color = GraphColor.orange
@@ -29,7 +31,7 @@ class StatusMenuController: NSObject {
         let accessEnabled = AXIsProcessTrustedWithOptions(options)
         
         if !accessEnabled {
-            print("Access not Enabled")
+            os_log("Access not enabled", log: log, type: .error)
         }
         
         keyboardTracker.monintorEvent()
@@ -40,6 +42,7 @@ class StatusMenuController: NSObject {
     }
         
     func setUpStatusItem() {
+        os_log("Setting up status item", log: log, type: .info)
         if let button = statusItem.button {
             button.title = "💩"
             button.target = self
@@ -64,6 +67,7 @@ class StatusMenuController: NSObject {
 
 extension StatusMenuController: graphPopDelegate {
     func getLastSevenDays() -> [Int] {
+        os_log("Getting last 7 days", log: log, type: .info)
         return keyboardTracker.getXDaysData(X: 7)
     }
     
