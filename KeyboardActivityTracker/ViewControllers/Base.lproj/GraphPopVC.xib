@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="14490.70" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" customObjectInstantitationMethod="direct">
     <dependencies>
+        <deployment identifier="macosx"/>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="14490.70"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -156,7 +157,7 @@
                     <constraints>
                         <constraint firstAttribute="trailing" secondItem="vKH-RZ-Tzi" secondAttribute="trailing" constant="1" id="1d8-7q-TDI"/>
                         <constraint firstItem="vKH-RZ-Tzi" firstAttribute="top" secondItem="6CO-wR-tQf" secondAttribute="top" constant="38" id="6a2-7o-6TA"/>
-                        <constraint firstItem="vKH-RZ-Tzi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KPc-l3-KyY" secondAttribute="trailing" id="9IT-iv-oKW"/>
+                        <constraint firstItem="vKH-RZ-Tzi" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="KPc-l3-KyY" secondAttribute="trailing" priority="250" id="9IT-iv-oKW"/>
                         <constraint firstItem="PV3-lT-d5c" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6CO-wR-tQf" secondAttribute="leading" constant="391" id="C90-cM-Rf8"/>
                         <constraint firstAttribute="bottom" secondItem="PV3-lT-d5c" secondAttribute="bottom" id="Duy-Cu-bo9"/>
                         <constraint firstItem="R8E-qT-Ule" firstAttribute="centerX" secondItem="6CO-wR-tQf" secondAttribute="centerX" id="Ihu-bk-Uu0"/>
@@ -166,7 +167,7 @@
                         <constraint firstItem="O5R-mB-fla" firstAttribute="top" secondItem="spW-Fu-Yfw" secondAttribute="bottom" id="W67-5L-frJ"/>
                         <constraint firstItem="khf-Nf-hDr" firstAttribute="centerY" secondItem="spW-Fu-Yfw" secondAttribute="centerY" id="cc1-8c-xie"/>
                         <constraint firstItem="KPc-l3-KyY" firstAttribute="centerY" secondItem="O5R-mB-fla" secondAttribute="centerY" id="cyA-Yk-TAK"/>
-                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="khf-Nf-hDr" secondAttribute="trailing" constant="238" id="lSl-zc-Fh7"/>
+                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="khf-Nf-hDr" secondAttribute="trailing" priority="250" id="lSl-zc-Fh7"/>
                         <constraint firstItem="KPc-l3-KyY" firstAttribute="leading" secondItem="O5R-mB-fla" secondAttribute="trailing" constant="5" id="lTe-fm-f5v"/>
                         <constraint firstItem="khf-Nf-hDr" firstAttribute="leading" secondItem="spW-Fu-Yfw" secondAttribute="trailing" constant="5" id="msk-ua-QDQ"/>
                         <constraint firstItem="spW-Fu-Yfw" firstAttribute="top" secondItem="6CO-wR-tQf" secondAttribute="top" constant="5" id="r3P-iy-GDn"/>
@@ -174,6 +175,13 @@
                         <constraint firstItem="spW-Fu-Yfw" firstAttribute="leading" secondItem="6CO-wR-tQf" secondAttribute="leading" constant="5" id="yE6-Ai-MOQ"/>
                         <constraint firstAttribute="height" constant="250" id="zh2-UW-dpX"/>
                     </constraints>
+                    <gestureRecognizers>
+                        <panGestureRecognizer delaysPrimaryMouseButtonEvents="YES" id="Ikz-Gf-PJm">
+                            <connections>
+                                <action selector="handlePan:" target="-2" id="J0t-9R-Kqp"/>
+                            </connections>
+                        </panGestureRecognizer>
+                    </gestureRecognizers>
                 </customView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hoe-qY-YXZ">
                     <rect key="frame" x="345" y="-2" width="66" height="32"/>
