@@ -103,18 +103,8 @@ import Cocoa
         graphLayer.lineCap = .round
 
         for (i, j) in graphPoints.enumerated() {
-            var point = CGPoint(x: columnXPoint(i), y: columnYPoint(j))
-            let circleLayer = CAShapeLayer()
-            point.x -= Constants.circleDiameter / 2
-            point.y -= Constants.circleDiameter / 2
-
-            let circle = CGPath(ellipseIn: CGRect(origin: point,
-                                                  size: CGSize(width: Constants.circleDiameter, height: Constants.circleDiameter)), transform: nil)
-            circleLayer.path = circle
-            circleLayer.fillColor = NSColor.white.cgColor
-            circleLayer.strokeColor = NSColor.white.cgColor
-            circleLayer.lineWidth = 0.8
-            circlesLayer.addSublayer(circleLayer)
+            let point = CGPoint(x: columnXPoint(i), y: columnYPoint(j))
+            circlesLayer.addSublayer(createCircleLayer(at: point))
         }
 
         gridLinesLayer.path = setUpLineLayer()
@@ -125,6 +115,22 @@ import Cocoa
         gradientLayer.addSublayer(graphLayer)
         gradientLayer.addSublayer(gridLinesLayer)
         gradientLayer.addSublayer(circlesLayer)
+    }
+
+    func createCircleLayer(at point: CGPoint) -> CAShapeLayer {
+        let circleLayer = CAShapeLayer()
+        let center = CGPoint(x: point.x - Constants.circleDiameter / 2,
+                             y: point.y - Constants.circleDiameter / 2)
+
+        let circle = CGPath(ellipseIn: CGRect(origin: center,
+                                              size: CGSize(width: Constants.circleDiameter,
+                                                           height: Constants.circleDiameter)),
+                            transform: nil)
+        circleLayer.path = circle
+        circleLayer.fillColor = NSColor.white.cgColor
+        circleLayer.strokeColor = NSColor.white.cgColor
+        circleLayer.lineWidth = 0.8
+        return circleLayer
     }
 
     func setUpLineLayer() -> CGPath {
@@ -171,18 +177,8 @@ import Cocoa
         circlesLayer.sublayers = nil
 
         for (i, j) in graphPoints.enumerated() {
-            var point = CGPoint(x: columnXPoint(i), y: columnYPoint(j))
-            let circleLayer = CAShapeLayer()
-            point.x -= Constants.circleDiameter / 2
-            point.y -= Constants.circleDiameter / 2
-
-            let circle = CGPath(ellipseIn: CGRect(origin: point,
-                                                  size: CGSize(width: Constants.circleDiameter, height: Constants.circleDiameter)), transform: nil)
-            circleLayer.path = circle
-            circleLayer.fillColor = NSColor.white.cgColor
-            circleLayer.strokeColor = NSColor.white.cgColor
-            circleLayer.lineWidth = 0.8
-            circlesLayer.addSublayer(circleLayer)
+            let point = CGPoint(x: columnXPoint(i), y: columnYPoint(j))
+            circlesLayer.addSublayer(createCircleLayer(at: point))
         }
     }
 

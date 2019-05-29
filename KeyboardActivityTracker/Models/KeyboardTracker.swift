@@ -110,7 +110,8 @@ class KeyboardTracker: NSObject {
             let dateFrom = calendar.startOfDay(for: startDate)
             let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
 
-            let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)", dateFrom as NSDate, dateTo! as NSDate)
+            let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)",
+                                        dateFrom as NSDate, dateTo! as NSDate)
 
             autoreleasepool {
                 let daily = fetchData(predicate: predicate)

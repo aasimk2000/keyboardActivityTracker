@@ -8,6 +8,7 @@
 
 import Cocoa
 
+// swiftlint:disable line_length
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate {
 
