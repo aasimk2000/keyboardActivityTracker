@@ -18,11 +18,11 @@ class KeyboardTracker: NSObject {
     var lastEvent: Date?
 
     func monintorEvent() {
-        eventMonitor = EventMonitor(mask: [.keyDown]) { [weak self] event in
+        eventMonitor = EventMonitor(mask: [.keyDown]) { [weak self] _ in
             let currentTime = Date()
             if let time = self?.lastEvent {
                 //print(currentTime.timeIntervalSince(time))
-                if (Double(currentTime.timeIntervalSince(time)) > 15) {
+                if Double(currentTime.timeIntervalSince(time)) > 15 {
                     self?.insertData()
                     self?.keyStrokeCount = 0
                     self?.lastEvent = currentTime
@@ -103,8 +103,8 @@ class KeyboardTracker: NSObject {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
 
-        for i in (0..<past).reversed() {
-            let timeBefore = TimeInterval(-1 * i * 24 * 60 * 60)
+        for day in (0..<past).reversed() {
+            let timeBefore = TimeInterval(-1 * day * 24 * 60 * 60)
             let startDate = Date(timeInterval: timeBefore, since: Date())
 
             let dateFrom = calendar.startOfDay(for: startDate)

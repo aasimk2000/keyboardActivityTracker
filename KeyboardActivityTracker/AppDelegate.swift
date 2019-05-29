@@ -31,6 +31,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentContainer(name: "KeyboardActivityTracker")
+        // swiftlint:disable:next unused_closure_parameter
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error {
                 // Replace this implementation with code to handle the error appropriately.
@@ -95,7 +96,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
             // Customize this code block to include application-specific recovery steps.
             let result = sender.presentError(nserror)
-            if (result) {
+            if result {
                 return .terminateCancel
             }
 

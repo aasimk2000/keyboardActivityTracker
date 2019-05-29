@@ -52,15 +52,15 @@ class StatusMenuController: NSObject {
     }
 
     @objc func buttonPressed(_ sender: Any?) {
-        let vc = GraphPopVC(nibName: "GraphPopVC", bundle: nil)
-        vc.graphPopDelegate = self
+        let graphPopVC = GraphPopVC(nibName: "GraphPopVC", bundle: nil)
+        graphPopVC.graphPopDelegate = self
         guard let button = statusItem.button else {
             fatalError("someting awful has happend")
         }
 
         NSApplication.shared.activate(ignoringOtherApps: true)
         popover.behavior = .transient
-        popover.contentViewController = vc
+        popover.contentViewController = graphPopVC
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)
     }
 }

@@ -8,6 +8,7 @@
 
 import Cocoa
 
+// swiftlint:disable identifier_name
 @IBDesignable class GraphView: NSView {
     private struct Constants {
         static let cornerRadius: CGFloat = 8.0
@@ -36,15 +37,11 @@ import Cocoa
     }
 
     override var isFlipped: Bool {
-        get {
             return true
-        }
     }
 
     override var wantsUpdateLayer: Bool {
-        get {
             return true
-        }
     }
 
     let graphLayer = CAShapeLayer()
@@ -120,6 +117,17 @@ import Cocoa
             circlesLayer.addSublayer(circleLayer)
         }
 
+        gridLinesLayer.path = setUpLineLayer()
+        gridLinesLayer.lineWidth = 1.0
+        let color = NSColor(white: 1.0, alpha: Constants.colorAlpha)
+        gridLinesLayer.strokeColor = color.cgColor
+
+        gradientLayer.addSublayer(graphLayer)
+        gradientLayer.addSublayer(gridLinesLayer)
+        gradientLayer.addSublayer(circlesLayer)
+    }
+
+    func setUpLineLayer() -> CGPath {
         let linePath = CGMutablePath()
         linePath.move(to: CGPoint(x: margin, y: topBorder))
         linePath.addLine(to: CGPoint(x: width - margin, y: topBorder))
@@ -129,14 +137,7 @@ import Cocoa
 
         linePath.move(to: CGPoint(x: margin, y: height - bottomBorder))
         linePath.addLine(to: CGPoint(x: width - margin, y: height - bottomBorder))
-        gridLinesLayer.path = linePath
-        gridLinesLayer.lineWidth = 1.0
-        let color = NSColor(white: 1.0, alpha: Constants.colorAlpha)
-        gridLinesLayer.strokeColor = color.cgColor
-
-        gradientLayer.addSublayer(graphLayer)
-        gradientLayer.addSublayer(gridLinesLayer)
-        gradientLayer.addSublayer(circlesLayer)
+        return linePath as CGPath
     }
 
     override func updateLayer() {
