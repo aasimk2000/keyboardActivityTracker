@@ -175,13 +175,6 @@
                         <constraint firstItem="spW-Fu-Yfw" firstAttribute="leading" secondItem="6CO-wR-tQf" secondAttribute="leading" constant="5" id="yE6-Ai-MOQ"/>
                         <constraint firstAttribute="height" constant="250" id="zh2-UW-dpX"/>
                     </constraints>
-                    <gestureRecognizers>
-                        <panGestureRecognizer delaysPrimaryMouseButtonEvents="YES" id="Ikz-Gf-PJm">
-                            <connections>
-                                <action selector="handlePan:" target="-2" id="J0t-9R-Kqp"/>
-                            </connections>
-                        </panGestureRecognizer>
-                    </gestureRecognizers>
                 </customView>
                 <button verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="hoe-qY-YXZ">
                     <rect key="frame" x="345" y="-2" width="66" height="32"/>
