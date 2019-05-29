@@ -20,7 +20,6 @@ extension Collection where Element: BinaryInteger {
     }
 }
 
-
 extension Collection where Element: BinaryFloatingPoint {
     /// Returns the average of all elements in the array
     var average: Element {

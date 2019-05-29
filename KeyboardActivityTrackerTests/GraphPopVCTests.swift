@@ -16,7 +16,7 @@ class GraphPopVCTests: XCTestCase {
         let tuesday = Date(timeIntervalSinceReferenceDate: 86400) //Tuesday, January 2, 2001
         let tueWeek = GraphPopVC.getDaysOfWeek(startDay: tuesday)
         XCTAssert(tueWeek == ["W", "T", "F", "S", "S", "M", "T"])
-        
+
         let wednesday = Date(timeInterval: 24 * 60 * 60, since: tuesday) // Wed
         let wedWeek = GraphPopVC.getDaysOfWeek(startDay: wednesday)
         XCTAssert(wedWeek == ["T", "F", "S", "S", "M", "T", "W"])

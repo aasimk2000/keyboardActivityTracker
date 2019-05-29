@@ -10,7 +10,6 @@
 import Foundation
 import CoreData
 
-
 extension KeyPresses {
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<KeyPresses> {

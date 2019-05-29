@@ -12,9 +12,9 @@ import os.log
 
 protocol graphPopDelegate: class {
     func getLastSevenDays() -> [Int]
-    
+
     func getCurrentKeyStroke() -> Int
-    
+
     var color: GraphColor { get set }
 }
 
@@ -23,7 +23,7 @@ enum GraphColor: Int {
     case blue
     case purple
     case kindablue
-    
+
     var colors: (startColor: NSColor, endColor: NSColor) {
         switch self {
         case .orange:
@@ -44,17 +44,17 @@ enum GraphColor: Int {
 }
 
 class GraphPopVC: NSViewController {
-    
+
     @IBOutlet var graphView: GraphView!
     @IBOutlet var averageKeyStrokes: NSTextField!
     @IBOutlet var maxKeyStrokes: NSTextField!
     @IBOutlet var dayOfWeekStack: NSStackView!
     @IBOutlet var currentKeyPresses: NSTextField!
     @IBOutlet var colorPopUpButton: NSPopUpButton!
-    
+
     let log = OSLog(subsystem: "KeyboardActivityTracker", category: "GraphPopVC")
-    weak var statusMenuController: StatusMenuController? = nil
-    weak var graphPopDelegate: graphPopDelegate? = nil
+    weak var statusMenuController: StatusMenuController?
+    weak var graphPopDelegate: graphPopDelegate?
     var color: GraphColor = .orange
 
     override func viewDidLoad() {
@@ -66,18 +66,18 @@ class GraphPopVC: NSViewController {
             let average = graphPoints?.average ?? 0
             let max = graphPoints?.max() ?? 0
             let currentKeyStrokes = (graphPoints?.last ?? 0) + (self.graphPopDelegate?.getCurrentKeyStroke() ?? 0)
-            
+
             let color = self.graphPopDelegate?.color ?? .orange
 
             DispatchQueue.main.async { [weak self] in
                 guard let self = self else { return }
                 self.colorPopUpButton.selectItem(at: color.rawValue)
                 self.setGraph(color: color)
-                self.graphView.graphPoints = graphPoints ?? [0,0,0,0,0,0,0]
+                self.graphView.graphPoints = graphPoints ?? [0, 0, 0, 0, 0, 0, 0]
                 self.maxKeyStrokes.stringValue = "\(max)"
                 self.averageKeyStrokes.stringValue = "\(Int(average))"
                 self.currentKeyPresses.stringValue = "\(currentKeyStrokes)"
-                
+
                 zip(self.dayOfWeekStack.arrangedSubviews, GraphPopVC.getDaysOfWeek()).forEach { labelView, dayChar in
                     if let label = labelView as? NSTextField {
                         label.stringValue = String(dayChar)
@@ -86,37 +86,37 @@ class GraphPopVC: NSViewController {
             }
         }
     }
-    
-    func setGraph(color : GraphColor) {
+
+    func setGraph(color: GraphColor) {
         (graphView.startColor, graphView.endColor) = color.colors
     }
-    
+
     @IBAction func quitPressed(_ sender: Any) {
         os_log("Quit pressed", log: log, type: .info)
         NSApplication.shared.terminate(self)
     }
-    
+
     @IBAction func popUpPressed(_ sender: Any) {
         graphPopDelegate?.color = GraphColor(rawValue: colorPopUpButton.indexOfSelectedItem) ?? GraphColor.orange
         os_log("Setting color to %s", log: log, type: .info, "\(graphPopDelegate?.color ?? .orange)")
         setGraph(color: graphPopDelegate?.color ?? .orange)
         let defaults = UserDefaults.standard
-        defaults.setValue(graphPopDelegate?.color.rawValue ?? 0, forKey: "color")        
+        defaults.setValue(graphPopDelegate?.color.rawValue ?? 0, forKey: "color")
     }
-    
+
     /// Returns the Days of Week as a character array formatted as [\"M\", \"T\", \"W\", \"T\", \"F\", \"S\", \"S\"]
     /// Takes in a optional argument to specify when to start from, defaults to current day
     /// i.e. if startDay is a saturday [\"S\", \"M\", \"T\", \"W\", \"T\", \"F\", \"S\"] is returned
     static func getDaysOfWeek(startDay: Date = Date()) -> [Character] {
         let calendar = Calendar.current
-        
+
         let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("EEEEE")
-        
+
         var components: [Character] = Array()
-        
+
         let numberOfDays = 7
-        
+
         for index in (0..<numberOfDays).reversed() {
             if let date = calendar.date(byAdding: .day, value: -index, to: startDay),
                 let dateChar = formatter.string(from: date).first {

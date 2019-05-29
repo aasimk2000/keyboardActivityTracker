@@ -9,6 +9,4 @@
 import XCTest
 @testable import KeyboardActivityTracker
 
-class KeyboardActivityTrackerTests: XCTestCase {
-    
-}
+class KeyboardActivityTrackerTests: XCTestCase { }
