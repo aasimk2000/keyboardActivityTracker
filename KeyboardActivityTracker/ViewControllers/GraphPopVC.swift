@@ -125,4 +125,11 @@ class GraphPopVC: NSViewController {
         }
         return components
     }
+
+    override func viewDidAppear() {
+        super.viewDidAppear()
+        if let window = view.window {
+            window.makeKey()
+        }
+    }
 }

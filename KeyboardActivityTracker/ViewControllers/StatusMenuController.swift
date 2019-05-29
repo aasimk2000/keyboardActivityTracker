@@ -58,8 +58,6 @@ class StatusMenuController: NSObject {
             fatalError("someting awful has happend")
         }
 
-        NSApplication.shared.activate(ignoringOtherApps: true)
-        popover.behavior = .transient
         popover.contentViewController = graphPopVC
         popover.show(relativeTo: button.bounds, of: button, preferredEdge: .maxY)
     }
