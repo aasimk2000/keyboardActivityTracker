@@ -54,34 +54,26 @@ class GraphPopVC: NSViewController {
 
     let log = OSLog(subsystem: "KeyboardActivityTracker", category: "GraphPopVC")
     weak var graphPopDelegate: graphPopDelegate?
-    var color: GraphColor = .orange
+    var color: GraphColor {
+        return AppDefaults.shared.graphColor
+    }
+    
+    override func viewWillAppear() {
+        super.viewWillAppear()
+        let graphPoints = self.graphPopDelegate?.getLastSevenDays()
+        let average = graphPoints?.average ?? 0
+        let max = graphPoints?.max() ?? 0
+        let currentKeyStrokes = (graphPoints?.last ?? 0) + (self.graphPopDelegate?.getCurrentKeyStroke() ?? 0)
+        self.colorPopUpButton.selectItem(at: color.rawValue)
+        self.setGraph(color: color)
+        self.graphView.graphPoints = graphPoints ?? [0, 0, 0, 0, 0, 0, 0]
+        self.maxKeyStrokes.stringValue = "\(max)"
+        self.averageKeyStrokes.stringValue = "\(Int(average))"
+        self.currentKeyPresses.stringValue = "\(currentKeyStrokes)"
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do view setup here.
-        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
-            guard let self = self else { return }
-            let graphPoints = self.graphPopDelegate?.getLastSevenDays()
-            let average = graphPoints?.average ?? 0
-            let max = graphPoints?.max() ?? 0
-            let currentKeyStrokes = (graphPoints?.last ?? 0) + (self.graphPopDelegate?.getCurrentKeyStroke() ?? 0)
-
-            let color = self.graphPopDelegate?.color ?? .orange
-
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else { return }
-                self.colorPopUpButton.selectItem(at: color.rawValue)
-                self.setGraph(color: color)
-                self.graphView.graphPoints = graphPoints ?? [0, 0, 0, 0, 0, 0, 0]
-                self.maxKeyStrokes.stringValue = "\(max)"
-                self.averageKeyStrokes.stringValue = "\(Int(average))"
-                self.currentKeyPresses.stringValue = "\(currentKeyStrokes)"
-
-                zip(self.dayOfWeekStack.arrangedSubviews, GraphPopVC.getDaysOfWeek()).forEach { labelView, dayChar in
-                    if let label = labelView as? NSTextField {
-                        label.stringValue = String(dayChar)
-                    }
-                }
+        zip(self.dayOfWeekStack.arrangedSubviews, GraphPopVC.getDaysOfWeek()).forEach { labelView, dayChar in
+            if let label = labelView as? NSTextField {
+                label.stringValue = String(dayChar)
             }
         }
     }
@@ -96,11 +88,8 @@ class GraphPopVC: NSViewController {
     }
 
     @IBAction func popUpPressed(_ sender: Any) {
-        graphPopDelegate?.color = GraphColor(rawValue: colorPopUpButton.indexOfSelectedItem) ?? GraphColor.orange
-        os_log("Setting color to %s", log: log, type: .info, "\(graphPopDelegate?.color ?? .orange)")
-        setGraph(color: graphPopDelegate?.color ?? .orange)
-        let defaults = UserDefaults.standard
-        defaults.setValue(graphPopDelegate?.color.rawValue ?? 0, forKey: "color")
+        AppDefaults.shared.graphColor = GraphColor(rawValue: colorPopUpButton.indexOfSelectedItem) ?? GraphColor.orange
+        setGraph(color: color)
     }
 
     /// Returns the Days of Week as a character array formatted as [\"M\", \"T\", \"W\", \"T\", \"F\", \"S\", \"S\"]

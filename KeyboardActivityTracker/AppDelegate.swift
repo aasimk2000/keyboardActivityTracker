@@ -22,7 +22,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, graphPopDelegate {
     var color: GraphColor = .blue
     
     let statusItem = NSStatusBar.system.statusItem(withLength: NSStatusItem.variableLength)
-    let keyboardTracker = KeyboardTracker()
+    lazy var keyboardTracker = KeyboardTracker()
     lazy var graphPopVC: GraphPopVC = {
         let vc = GraphPopVC(nibName: "GraphPopVC", bundle: nil)
         vc.graphPopDelegate = self
@@ -56,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, graphPopDelegate {
 
             keyboardTracker.monintorEvent()
         #endif
-        setUpMenubar()        
+        setUpMenubar()
     }
     
     func applicationWillTerminate(_ notification: Notification) {

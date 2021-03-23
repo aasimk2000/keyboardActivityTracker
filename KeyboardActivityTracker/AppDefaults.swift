@@ -21,7 +21,7 @@ final class AppDefaults {
             return GraphColor(rawValue: UserDefaults.standard.integer(forKey: Key.graphColor)) ?? .orange
         }
         set {
-            UserDefaults.standard.set(newValue, forKey: Key.graphColor)
+            UserDefaults.standard.set(newValue.rawValue, forKey: Key.graphColor)
         }
     }
 }
