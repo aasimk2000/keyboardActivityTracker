@@ -6,7 +6,7 @@
 //  Copyright © 2019 Aasim Kandrikar. All rights reserved.
 //
 
-import Cocoa
+import AppKit
 
 // swiftlint:disable line_length
 @NSApplicationMain

@@ -118,6 +118,25 @@
 			path = "Core Data Files";
 			sourceTree = "<group>";
 		};
+		8CAFCF6A260A8D7400F8EB3A /* MenuBar */ = {
+			isa = PBXGroup;
+			children = (
+				8CC779CB226FC2FA00481F4F /* GraphPopVC.xib */,
+				8C21F34A22500EDC00083FE4 /* GraphView.swift */,
+				8CEE9AC8226A6D6300602179 /* GraphPopVC.swift */,
+			);
+			path = MenuBar;
+			sourceTree = "<group>";
+		};
+		8CAFCF6B260A8D8900F8EB3A /* Statistics */ = {
+			isa = PBXGroup;
+			children = (
+				8C5BA25B260A580E00F7F65A /* Statistics.storyboard */,
+				8C5BA288260A734900F7F65A /* StatitisticsWindowController.swift */,
+			);
+			path = Statistics;
+			sourceTree = "<group>";
+		};
 		8CCB4715223708E40038CDFC = {
 			isa = PBXGroup;
 			children = (
@@ -140,17 +159,14 @@
 		8CCB4720223708E40038CDFC /* KeyboardActivityTracker */ = {
 			isa = PBXGroup;
 			children = (
+				8C21F35122515C9400083FE4 /* Extensions */,
 				8C5BA263260A698800F7F65A /* Main.storyboard */,
 				8CCB4721223708E40038CDFC /* AppDelegate.swift */,
-				8C5BA25B260A580E00F7F65A /* Statistics.storyboard */,
-				8C5BA288260A734900F7F65A /* StatitisticsWindowController.swift */,
-				8CCB475122371CE40038CDFC /* KeyboardTracker.swift */,
 				8C5BA231260A50BD00F7F65A /* AppDefaults.swift */,
+				8CCB475122371CE40038CDFC /* KeyboardTracker.swift */,
 				8CCB474E22370B0A0038CDFC /* EventMonitor.swift */,
-				8CC779CB226FC2FA00481F4F /* GraphPopVC.xib */,
-				8C21F34A22500EDC00083FE4 /* GraphView.swift */,
-				8CEE9AC8226A6D6300602179 /* GraphPopVC.swift */,
-				8C21F35122515C9400083FE4 /* Extensions */,
+				8CAFCF6A260A8D7400F8EB3A /* MenuBar */,
+				8CAFCF6B260A8D8900F8EB3A /* Statistics */,
 				8C26C45E2238264800013F89 /* Core Data Files */,
 				8CCB4726223708E50038CDFC /* Assets.xcassets */,
 				8CCB472B223708E50038CDFC /* Info.plist */,

@@ -6,8 +6,7 @@
 //  Copyright © 2019 Aasim Kandrikar. All rights reserved.
 //
 
-import Cocoa
-import Dispatch
+import AppKit
 import os.log
 
 protocol graphPopDelegate: class {
