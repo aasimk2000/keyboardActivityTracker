@@ -44,22 +44,14 @@ class KeyboardTracker: NSObject {
 
     func insertData() {
         os_log("Begin keypress insertion into core data", log: log, type: .info)
-        guard let delegate = NSApp.delegate as? AppDelegate else { return }
-
-        let context = delegate.persistentContainer.viewContext
-        let keypresses = KeyPresses(context: context)
-        keypresses.numKeyStrokes = Int16(keyStrokeCount)
-        keypresses.startTime = firstEvent as NSDate?
-        keypresses.endTime = lastEvent as NSDate?
-        delegate.saveAction(nil)
+        CoreDataStack.shared.insertKeyPress(count: Int16(keyStrokeCount), from: firstEvent!, to: lastEvent!)
         os_log("End core data insertion", log: log, type: .info)
     }
 
     func fetchStatsArray() -> [KeyPresses] {
         var stats = [KeyPresses]()
-        guard let delegate = NSApp.delegate as? AppDelegate else { return stats }
 
-        let context = delegate.persistentContainer.viewContext
+        let context = CoreDataStack.shared.taskContext
         do {
             stats = try context.fetch(KeyPresses.fetchRequest())
         } catch {
@@ -70,12 +62,11 @@ class KeyboardTracker: NSObject {
     }
 
     func fetchData(predicate: NSPredicate) -> Int {
-        guard let delegate = NSApp.delegate as? AppDelegate else { return 0 }
 
         let request: NSFetchRequest<KeyPresses> = KeyPresses.fetchRequest()
         request.predicate = predicate
         request.returnsObjectsAsFaults = false
-        let context = delegate.persistentContainer.viewContext
+        let context = CoreDataStack.shared.taskContext
         do {
             let result = try context.fetch(request)
             return result.reduce(0) { $0 + Int($1.numKeyStrokes) }
@@ -99,25 +90,13 @@ class KeyboardTracker: NSObject {
     }
 
     func getXDaysData(X past: Int) -> [Int] {
-        var data = [Int]()
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
-
-        for day in (0..<past).reversed() {
-            let timeBefore = TimeInterval(-1 * day * 24 * 60 * 60)
-            let startDate = Date(timeInterval: timeBefore, since: Date())
-
-            let dateFrom = calendar.startOfDay(for: startDate)
-            let dateTo = calendar.date(byAdding: .day, value: 1, to: dateFrom)
-
-            let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)",
-                                        dateFrom as NSDate, dateTo! as NSDate)
-
-            autoreleasepool {
-                let daily = fetchData(predicate: predicate)
-                data.append(daily)
-            }
-        }
-        return data
+        let end = calendar.startOfDay(for: Date()).addingTimeInterval(86400)
+        let start = calendar.date(byAdding: .day, value: -past, to: end)!
+        var day = DateComponents()
+        day.day = 1
+        let dataDict = CoreDataStack.shared.getValues(from: start, to: end, interval: day)
+        return dataDict.map { $0.1 }
     }
 }

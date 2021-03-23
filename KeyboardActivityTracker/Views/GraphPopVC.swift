@@ -53,7 +53,6 @@ class GraphPopVC: NSViewController {
     @IBOutlet var colorPopUpButton: NSPopUpButton!
 
     let log = OSLog(subsystem: "KeyboardActivityTracker", category: "GraphPopVC")
-    weak var statusMenuController: StatusMenuController?
     weak var graphPopDelegate: graphPopDelegate?
     var color: GraphColor = .orange
 
