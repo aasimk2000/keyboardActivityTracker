@@ -1,0 +1,169 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+    </dependencies>
+    <scenes>
+        <!--Application-->
+        <scene sceneID="fNa-aM-FCn">
+            <objects>
+                <application id="HLa-sd-lgC" sceneMemberID="viewController">
+                    <menu key="mainMenu" title="Main Menu" systemMenu="main" id="qC8-Yx-gzp">
+                        <items>
+                            <menuItem title="KeyboardActivityTracker" id="BBW-TJ-sCq" userLabel="KeyboardActivityTracker">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="KeyboardActivityTracker" systemMenu="apple" id="gdK-bz-33w">
+                                    <items>
+                                        <menuItem title="About KeyboardActivityTracker" id="4Dd-Zi-GOC" userLabel="About KeyboardActivityTracker">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="orderFrontStandardAboutPanel:" target="WmN-Ew-2hd" id="FS2-VL-Ssd"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="543-YU-8aX"/>
+                                        <menuItem title="Preferences…" keyEquivalent="," id="FUI-Bs-52s"/>
+                                        <menuItem isSeparatorItem="YES" id="gyo-ga-shm"/>
+                                        <menuItem title="Services" id="IMf-bC-AUa">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <menu key="submenu" title="Services" systemMenu="services" id="1qd-hC-4es"/>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Raq-vM-Pr2"/>
+                                        <menuItem title="Hide KeyboardActivityTracker" keyEquivalent="h" id="LPg-YU-TjP">
+                                            <connections>
+                                                <action selector="hide:" target="WmN-Ew-2hd" id="dq5-A5-gfN"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Hide Others" keyEquivalent="h" id="vii-a0-Hj4">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="hideOtherApplications:" target="WmN-Ew-2hd" id="QaL-Tw-MSF"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Show All" id="es9-Uh-B6H">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="unhideAllApplications:" target="WmN-Ew-2hd" id="0T7-px-LjI"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Ebg-ME-h8C"/>
+                                        <menuItem title="Quit KeyboardActivityTracker" keyEquivalent="q" id="9pM-au-F5h">
+                                            <connections>
+                                                <action selector="terminate:" target="WmN-Ew-2hd" id="Dhm-r1-hjA"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="File" id="lrV-dX-jsH">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="File" id="azF-4r-6uX">
+                                    <items>
+                                        <menuItem title="Close" keyEquivalent="w" id="sBz-xK-bNn">
+                                            <connections>
+                                                <action selector="performClose:" target="WmN-Ew-2hd" id="b8F-jT-N5v"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Edit" id="vsu-eU-FTv">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Edit" id="j7O-NV-v5J">
+                                    <items>
+                                        <menuItem title="Undo" keyEquivalent="z" id="QU8-h1-tGC">
+                                            <connections>
+                                                <action selector="undo:" target="WmN-Ew-2hd" id="B0J-lM-GcN"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Redo" keyEquivalent="Z" id="AJg-Ev-FcB">
+                                            <connections>
+                                                <action selector="redo:" target="WmN-Ew-2hd" id="bu2-si-cco"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Bf9-73-NWK"/>
+                                        <menuItem title="Cut" keyEquivalent="x" id="Bga-el-KrT">
+                                            <connections>
+                                                <action selector="cut:" target="WmN-Ew-2hd" id="2nB-2M-zJ2"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Copy" keyEquivalent="c" id="HdA-nT-GcW">
+                                            <connections>
+                                                <action selector="copy:" target="WmN-Ew-2hd" id="kGW-sm-E8G"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste" keyEquivalent="v" id="TJp-N6-hjS">
+                                            <connections>
+                                                <action selector="paste:" target="WmN-Ew-2hd" id="Hny-8u-xhh"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Paste and Match Style" keyEquivalent="V" id="v0g-ln-RGA">
+                                            <modifierMask key="keyEquivalentModifierMask" option="YES" command="YES"/>
+                                            <connections>
+                                                <action selector="pasteAsPlainText:" target="WmN-Ew-2hd" id="Fwi-kv-u0c"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Delete" id="NP1-4Y-cf5">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="delete:" target="WmN-Ew-2hd" id="2zy-vo-lwb"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Select All" keyEquivalent="a" id="LSO-o8-SlM">
+                                            <connections>
+                                                <action selector="selectAll:" target="WmN-Ew-2hd" id="HFz-dy-cOU"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Window" id="MxN-Xb-QRr">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Window" systemMenu="window" id="vdc-uy-Xr0">
+                                    <items>
+                                        <menuItem title="Minimize" keyEquivalent="m" id="T2W-yH-iTC">
+                                            <connections>
+                                                <action selector="performMiniaturize:" target="WmN-Ew-2hd" id="KLW-Fc-177"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem title="Zoom" id="PB9-mc-90f">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="performZoom:" target="WmN-Ew-2hd" id="iD0-Dd-G7Z"/>
+                                            </connections>
+                                        </menuItem>
+                                        <menuItem isSeparatorItem="YES" id="Dfy-N5-7lE"/>
+                                        <menuItem title="Bring All to Front" id="oKu-uT-Z5X">
+                                            <modifierMask key="keyEquivalentModifierMask"/>
+                                            <connections>
+                                                <action selector="arrangeInFront:" target="WmN-Ew-2hd" id="cnp-3r-zXn"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                            <menuItem title="Help" id="PFv-SV-LTV">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <menu key="submenu" title="Help" systemMenu="help" id="vP3-F8-0rT">
+                                    <items>
+                                        <menuItem title="KeybaordActivityTracker Help" keyEquivalent="?" id="3eZ-LQ-pK7">
+                                            <connections>
+                                                <action selector="showHelp:" target="WmN-Ew-2hd" id="pFv-mI-l1R"/>
+                                            </connections>
+                                        </menuItem>
+                                    </items>
+                                </menu>
+                            </menuItem>
+                        </items>
+                    </menu>
+                    <connections>
+                        <outlet property="delegate" destination="Voe-Tx-rLC" id="ADA-aE-p27"/>
+                    </connections>
+                </application>
+                <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="KeyboardActivityTracker" customModuleProvider="target"/>
+                <customObject id="WmN-Ew-2hd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="75" y="0.0"/>
+        </scene>
+    </scenes>
+</document>

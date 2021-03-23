@@ -35,6 +35,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, graphPopDelegate {
         return popover
     }()
     
+    lazy var statisticsWindowController: NSWindowController = {
+        let storyboard = NSStoryboard(name: "Statistics", bundle: nil)
+        return storyboard.instantiateInitialController()! as! NSWindowController
+    }()
+    
     func setUpMenubar() {
         if let button = statusItem.button {
             button.title = "💩"
@@ -51,7 +56,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, graphPopDelegate {
 
             keyboardTracker.monintorEvent()
         #endif
-        setUpMenubar()
+        setUpMenubar()        
     }
     
     func applicationWillTerminate(_ notification: Notification) {

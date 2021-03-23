@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.Storyboard.XIB" version="3.0" toolsVersion="17701" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES" initialViewController="13d-IY-oQh">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="17701"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Window Controller-->
+        <scene sceneID="N5O-NL-s8h">
+            <objects>
+                <windowController showSeguePresentationStyle="single" id="13d-IY-oQh" customClass="StatisticsWindowController" customModule="KeyboardActivityTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="disallowed" id="4ps-9i-0Ie">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="163" y="197" width="480" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="775"/>
+                        <view key="contentView" id="Ak0-Ko-34C">
+                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </view>
+                        <connections>
+                            <outlet property="delegate" destination="13d-IY-oQh" id="4A2-hE-tco"/>
+                        </connections>
+                    </window>
+                    <connections>
+                        <segue destination="j1J-xi-Mi1" kind="relationship" relationship="window.shadowedContentViewController" id="GoW-Wk-GfY"/>
+                    </connections>
+                </windowController>
+                <customObject id="4ZQ-pr-onf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-620" y="177"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2aw-0t-UQr">
+            <objects>
+                <viewController id="j1J-xi-Mi1" sceneMemberID="viewController">
+                    <view key="view" id="88K-RV-Hyw">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="7dV-Ew-28q" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="87" y="146"/>
+        </scene>
+    </scenes>
+</document>
