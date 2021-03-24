@@ -14,7 +14,7 @@ protocol StatisticsViewDataSource: NSObject {
     func statisticsViewValue(for index: Int) -> CGFloat
     func statisticsViewMaxValue() -> CGFloat
     func statisticsViewMinValue() -> CGFloat
-    func statisticsViewLabel(for index: Int) -> String
+    func statisticsViewLabel(for index: Int) -> String?
     func statisticsViewSeparate(at index: Int) -> Bool
 }
 
@@ -43,9 +43,13 @@ class StatisticsView: NSView {
         // Drawing code here.
         let roundRectPath = NSBezierPath(roundedRect: dirtyRect, xRadius: 16.0, yRadius: 16.0)
         roundRectPath.addClip()
-        let graphBounds = graphRect(dirtyRect)
         drawBackgroundGradient(dirtyRect)
+//        let dirtyRect = dirtyRect.insetBy(dx: 10, dy: 0)
+        let graphBounds = graphRect(dirtyRect)
         drawHorizontalGrid(in: graphBounds)
+        drawKeyStrokeCounts(in: graphBounds)
+        let labelBounds = labelRect(dirtyRect)
+        drawLabelText(in: labelBounds)
     }
     
     func drawBackgroundGradient(_ dirtyRect: NSRect) {
@@ -55,30 +59,52 @@ class StatisticsView: NSView {
         ctx.drawLinearGradient(backgroundGradient, start: startPoint, end: endPoint, options: [])
     }
     
-    func drawHorizontalGrid(in rect: NSRect) {
+    func drawKeyStrokeCounts(in rect: NSRect) {
+        NSColor.white.setStroke()
+        let (path, _) = pathFromData(in: rect)
+        path.stroke()
+    }
+    
+    func drawLabelText(in rect: NSRect) {
+        let itemCount = dataSource.statisticsViewItemCount()
+        let font = NSFont.boldSystemFont(ofSize: 16)
+        let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle.default.mutableCopy() as! NSMutableParagraphStyle
+        let attributes: [NSAttributedString.Key: Any] = [.font: font, .paragraphStyle: paragraphStyle]
         guard let ctx = NSGraphicsContext.current?.cgContext else { return }
         ctx.saveGState()
-        let topClipShape = topClipPath(in: rect)
-        NSColor.green.setFill()
-        topClipShape.fill()
-        topClipShape.addClip()
+        let dataSpacing = (rect.width / CGFloat(itemCount - 1)).rounded(.down)
+        print(dataSpacing)
+        for i in 0..<itemCount {
+            if let labelText = dataSource.statisticsViewLabel(for: i) as NSString? {
+                // Have minX to datasapcing to draw Label
+                let labelBounds = CGRect(x: rect.minX, y: rect.minY, width: dataSpacing, height: rect.height)
+                labelText.draw(in: labelBounds, withAttributes: attributes)
+            }
+            ctx.translateBy(x: dataSpacing, y: 0)
+        }
+        ctx.restoreGState()
+    }
+    
+    func drawHorizontalGrid(in rect: NSRect) {
+        guard let ctx = NSGraphicsContext.current?.cgContext else { return }
         
         let path = NSBezierPath()
         path.lineWidth = 1.0
-        path.move(to: NSPoint(x: rect.minX.rounded(), y: rect.minY.rounded() + 0.5))
-        path.line(to: NSPoint(x: rect.maxX.rounded(), y: rect.minY.rounded() + 0.5))
+        path.move(to: NSPoint(x: rect.minX.rounded(), y: rect.maxY.rounded() + 0.5))
+        path.line(to: NSPoint(x: rect.maxX.rounded(), y: rect.maxY.rounded() + 0.5))
         let dashPattern: [CGFloat] = [1.0, 1.0]
         path.setLineDash(dashPattern, count: 2, phase: 0.0)
         let gridColor = NSColor(red: 74 / 255, green: 86/255, blue: 126/255, alpha: 1.0)
-        gridColor.setStroke()
         ctx.saveGState()
+        gridColor.setStroke()
         path.stroke()
+        let topClip = topClipPath(in: rect)
+        topClip.addClip()
+        gridColor.setStroke()
         for _ in 1...5 {
-            ctx.translateBy(x: 0, y: (rect.height / 5).rounded())
+            ctx.translateBy(x: 0, y: -((rect.height) / 5).rounded())
             path.stroke()
         }
-        print(rect)
-        ctx.restoreGState()
         ctx.restoreGState()
     }
     
@@ -97,7 +123,6 @@ class StatisticsView: NSView {
     }
     
     func topClipPath(in rect: NSRect) -> NSBezierPath {
-        print(rect)
         let path = NSBezierPath()
         let (dataPath, initialPoint) = pathFromData(in: rect)
         path.append(dataPath)
@@ -108,8 +133,6 @@ class StatisticsView: NSView {
         path.line(to: CGPoint(x: rect.minX, y: initialPoint.y))
         path.line(to: initialPoint)
         path.close()
-        print(currentPoint)
-        print(path)
         return path
     }
     
@@ -126,10 +149,10 @@ class StatisticsView: NSView {
         path.lineJoinStyle = .round
         let rect = rect.insetBy(dx: lineWidth / 2, dy: lineWidth)
         let horizontalSpacing = rect.width / CGFloat(dataCounts - 1)
+        print(horizontalSpacing)
         let verticalScale = rect.height / (maxCount - minCount)
         var currentKeyCount = dataSource.statisticsViewValue(for: 0)
         let initialPoint = CGPoint(x: rect.minX, y: rect.minY + (currentKeyCount - minCount) * verticalScale)
-        print(rect, minCount, verticalScale)
         path.move(to: initialPoint)
         for i in 1..<(dataCounts - 1) {
             currentKeyCount = dataSource.statisticsViewValue(for: i)
@@ -153,12 +176,20 @@ class StatisticsView: NSView {
     }
     
     func graphRect(_ rect: NSRect) -> NSRect {
-        let bottom: CGFloat = bottomLabelHeight(rect)
+        let bottom: CGFloat = rect.origin.y + bottomLabelHeight(rect)
         let topPadding: CGFloat = 10
         let height = rect.height - bottomLabelHeight(rect) - topPadding
-        let left: CGFloat = 0
+        let left: CGFloat = rect.origin.x
         let right = rect.width - rightLabelWidth(rect)
         return NSRect(x: left, y: bottom, width: right, height: height)
+    }
+    
+    func labelRect(_ rect: NSRect) -> NSRect {
+        let bottom = rect.origin.y
+        let left = rect.origin.x
+        let width = rect.width - rightLabelWidth(rect)
+        let height = bottomLabelHeight(rect)
+        return NSRect(x: left, y: bottom, width: width, height: height)
     }
     
     func bottomLabelHeight(_ rect: NSRect) -> CGFloat {
