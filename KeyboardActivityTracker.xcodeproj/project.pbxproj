@@ -15,6 +15,8 @@
 		8C5BA264260A698800F7F65A /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8C5BA263260A698800F7F65A /* Main.storyboard */; };
 		8C5BA289260A734900F7F65A /* StatitisticsWindowController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5BA288260A734900F7F65A /* StatitisticsWindowController.swift */; };
 		8C7F35F3229946BA00864A26 /* GraphPopVCTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C7F35F12299461400864A26 /* GraphPopVCTests.swift */; };
+		8CAFCF71260A93A900F8EB3A /* StatisticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFCF70260A93A900F8EB3A /* StatisticsViewController.swift */; };
+		8CAFCF76260A947900F8EB3A /* StatisticsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CAFCF75260A947900F8EB3A /* StatisticsView.swift */; };
 		8CC779C9226FC2FA00481F4F /* GraphPopVC.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8CC779CB226FC2FA00481F4F /* GraphPopVC.xib */; };
 		8CCB4722223708E40038CDFC /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4721223708E40038CDFC /* AppDelegate.swift */; };
 		8CCB4725223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CCB4723223708E40038CDFC /* KeyboardActivityTracker.xcdatamodeld */; };
@@ -54,6 +56,8 @@
 		8C5BA263260A698800F7F65A /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		8C5BA288260A734900F7F65A /* StatitisticsWindowController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatitisticsWindowController.swift; sourceTree = "<group>"; };
 		8C7F35F12299461400864A26 /* GraphPopVCTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GraphPopVCTests.swift; sourceTree = "<group>"; };
+		8CAFCF70260A93A900F8EB3A /* StatisticsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsViewController.swift; sourceTree = "<group>"; };
+		8CAFCF75260A947900F8EB3A /* StatisticsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatisticsView.swift; sourceTree = "<group>"; };
 		8CC779CA226FC2FA00481F4F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/GraphPopVC.xib; sourceTree = "<group>"; };
 		8CCB471E223708E40038CDFC /* KeyboardActivityTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = KeyboardActivityTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CCB4721223708E40038CDFC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -133,6 +137,8 @@
 			children = (
 				8C5BA25B260A580E00F7F65A /* Statistics.storyboard */,
 				8C5BA288260A734900F7F65A /* StatitisticsWindowController.swift */,
+				8CAFCF70260A93A900F8EB3A /* StatisticsViewController.swift */,
+				8CAFCF75260A947900F8EB3A /* StatisticsView.swift */,
 			);
 			path = Statistics;
 			sourceTree = "<group>";
@@ -346,6 +352,7 @@
 				8CCB4755223720EF0038CDFC /* KeyPresses+CoreDataClass.swift in Sources */,
 				8CCB474F22370B0A0038CDFC /* EventMonitor.swift in Sources */,
 				8C21F35322515CA100083FE4 /* Collection.swift in Sources */,
+				8CAFCF76260A947900F8EB3A /* StatisticsView.swift in Sources */,
 				8CCB475222371CE40038CDFC /* KeyboardTracker.swift in Sources */,
 				8CEE9ACA226A6D6300602179 /* GraphPopVC.swift in Sources */,
 				8C5BA232260A50BD00F7F65A /* AppDefaults.swift in Sources */,
@@ -355,6 +362,7 @@
 				8C5BA289260A734900F7F65A /* StatitisticsWindowController.swift in Sources */,
 				8CCB4756223720EF0038CDFC /* KeyPresses+CoreDataProperties.swift in Sources */,
 				8C21F34B22500EDC00083FE4 /* GraphView.swift in Sources */,
+				8CAFCF71260A93A900F8EB3A /* StatisticsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

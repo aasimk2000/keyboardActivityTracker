@@ -15,6 +15,7 @@
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
                         <rect key="contentRect" x="163" y="197" width="480" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1280" height="775"/>
+                        <value key="minSize" type="size" width="480" height="270"/>
                         <view key="contentView" id="Ak0-Ko-34C">
                             <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                             <autoresizingMask key="autoresizingMask"/>
@@ -31,14 +32,28 @@
             </objects>
             <point key="canvasLocation" x="-620" y="177"/>
         </scene>
-        <!--View Controller-->
+        <!--Statistics View Controller-->
         <scene sceneID="2aw-0t-UQr">
             <objects>
-                <viewController id="j1J-xi-Mi1" sceneMemberID="viewController">
+                <viewController id="j1J-xi-Mi1" customClass="StatisticsViewController" customModule="KeyboardActivityTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" id="88K-RV-Hyw">
                         <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="1xz-xc-bbd" customClass="StatisticsView" customModule="KeyboardActivityTracker" customModuleProvider="target">
+                                <rect key="frame" x="10" y="10" width="460" height="250"/>
+                            </customView>
+                        </subviews>
+                        <constraints>
+                            <constraint firstItem="1xz-xc-bbd" firstAttribute="top" secondItem="88K-RV-Hyw" secondAttribute="top" constant="10" id="58h-a8-pQd"/>
+                            <constraint firstAttribute="trailing" secondItem="1xz-xc-bbd" secondAttribute="trailing" constant="10" id="Cwj-FH-q5U"/>
+                            <constraint firstItem="1xz-xc-bbd" firstAttribute="leading" secondItem="88K-RV-Hyw" secondAttribute="leading" constant="10" id="fGC-ZS-HMe"/>
+                            <constraint firstAttribute="bottom" secondItem="1xz-xc-bbd" secondAttribute="bottom" constant="10" id="wsz-bW-KaV"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="statisticsView" destination="1xz-xc-bbd" id="xP2-lr-k5e"/>
+                    </connections>
                 </viewController>
                 <customObject id="7dV-Ew-28q" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>

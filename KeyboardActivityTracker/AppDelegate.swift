@@ -57,6 +57,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, graphPopDelegate {
             keyboardTracker.monintorEvent()
         #endif
         setUpMenubar()
+        statisticsWindowController.showWindow(self)
     }
     
     func applicationWillTerminate(_ notification: Notification) {
