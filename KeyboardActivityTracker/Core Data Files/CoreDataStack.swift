@@ -50,37 +50,52 @@ class CoreDataStack {
         }
     }
     
-    func getValues(from: Date, to: Date, interval: DateComponents) -> [(Date, Int)] {
+    func getValues(from startDate: Date, to endDate: Date, interval: DateComponents) -> [(Date, Int)] {
+        let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)", startDate as NSDate, endDate as NSDate)
+        let results = fetchValues(predicate: predicate)
+        
+        return aggregate(results: results, start: startDate, end: endDate, interval: interval)
+    }
+    
+    func getValues(groupedBy: Calendar.Component, interval: DateComponents) -> [(Date, Int)] {
+        let results = fetchValues(predicate: nil)
+        let calendar = Calendar.current
+        var startDate = results.first!.startTime! as Date
+        var endDate = results.last!.startTime! as Date
+        startDate = calendar.dateInterval(of: groupedBy, for: startDate)!.start
+        endDate = calendar.dateInterval(of: groupedBy, for: endDate)!.end
+        return aggregate(results: results, start: startDate, end: endDate, interval: interval)
+    }
+    
+    func fetchValues(predicate: NSPredicate?) -> [KeyPresses] {
         let context = taskContext
         let request: NSFetchRequest<KeyPresses> = KeyPresses.fetchRequest()
-        let predicate = NSPredicate(format: "(startTime >= %@) AND (startTime < %@)", from as NSDate, to as NSDate)
         request.predicate = predicate
         request.propertiesToFetch = [#keyPath(KeyPresses.startTime), #keyPath(KeyPresses.numKeyStrokes)]
         request.sortDescriptors = [NSSortDescriptor(key: #keyPath(KeyPresses.startTime), ascending: true)]
-        do {
-            let results = try context.fetch(request)
-            let calendar = Calendar.current
-            var start = from
-            var end = calendar.date(byAdding: interval, to: start)!
-            var dict: [(Date,Int)] = []
-            var index = results.startIndex
-            while end <= to {
-                var count = 0
-                while index != results.endIndex {
-                    if (results[index].startTime! as Date) < end {
-                        count += Int(results[index].numKeyStrokes)
-                        index = results.index(after: index)
-                    } else {
-                        break
-                    }
+        return try! context.fetch(request)
+    }
+    
+    func aggregate(results: [KeyPresses], start: Date, end: Date, interval: DateComponents) -> [(Date, Int)] {
+        let calendar = Calendar.current
+        var start = start
+        var endOfInterval = calendar.date(byAdding: interval, to: start)!
+        var aggregatedCounts: [(Date, Int)] = [] // TODO: Possibly reserve capacity
+        var index = results.startIndex
+        while endOfInterval <= end {
+            var count = 0
+            while index != results.endIndex {
+                if (results[index].startTime! as Date) < endOfInterval {
+                    count += Int(results[index].numKeyStrokes)
+                    index = results.index(after: index)
+                } else {
+                    break
                 }
-                dict.append((start, count))
-                start = end
-                end = calendar.date(byAdding: interval, to: start)!
             }
-            return dict
-        } catch {
-            return []
+            aggregatedCounts.append((start, count))
+            start = endOfInterval
+            endOfInterval = calendar.date(byAdding: interval, to: start)!
         }
+        return aggregatedCounts
     }
 }

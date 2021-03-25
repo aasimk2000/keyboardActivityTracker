@@ -39,16 +39,18 @@ class StatisticsView: NSView {
 
     override func draw(_ dirtyRect: NSRect) {
         super.draw(dirtyRect)
-
-        // Drawing code here.
-        let roundRectPath = NSBezierPath(roundedRect: dirtyRect, xRadius: 16.0, yRadius: 16.0)
+        let roundRectPath = NSBezierPath(roundedRect: bounds, xRadius: 16.0, yRadius: 16.0)
         roundRectPath.addClip()
-        drawBackgroundGradient(dirtyRect)
+        drawBackgroundGradient(bounds)
 //        let dirtyRect = dirtyRect.insetBy(dx: 10, dy: 0)
-        let graphBounds = graphRect(dirtyRect)
+        if dataSource.statisticsViewItemCount() == 0 {
+            // Show no data available
+            return
+        }
+        let graphBounds = graphRect(bounds)
         drawHorizontalGrid(in: graphBounds)
         drawKeyStrokeCounts(in: graphBounds)
-        let labelBounds = labelRect(dirtyRect)
+        let labelBounds = labelRect(bounds)
         drawLabelText(in: labelBounds)
     }
     

@@ -10,6 +10,7 @@ import Cocoa
 
 final class StatisticsViewController: NSViewController {
     @IBOutlet weak var statisticsView: StatisticsView!
+    @IBOutlet weak var scrollView: NSScrollView!
     
     var currentTimeRange = StatisticsTimerange.week {
         didSet {
@@ -20,7 +21,6 @@ final class StatisticsViewController: NSViewController {
         }
     }
     
-    let vals: [CGFloat] = [10, 20, 50, 100, 19, 200, 50]
     var data: [(Date, Int)]!
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -46,47 +46,39 @@ final class StatisticsViewController: NSViewController {
         case .year:
             loadYearData()
         }
+        if data.count > 0 {
+            statisticsView.frame.size.width = CGFloat(32 * (data.count + 10))
+        } else {
+            statisticsView.frame.size.width = scrollView.contentSize.width
+        }
     }
     
     func loadDayData() {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
-        let end = calendar.startOfDay(for: Date()).addingTimeInterval(86400)
-        let start = calendar.date(byAdding: .day, value: -1, to: end)!
-        var month = DateComponents()
-        month.hour = 1
-        data = CoreDataStack.shared.getValues(from: start, to: end, interval: month)
+        let hour = DateComponents(hour: 1)
+        data = CoreDataStack.shared.getValues(groupedBy: .day, interval: hour)
     }
     
     func loadWeekData() {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
-        let end = calendar.startOfDay(for: Date()).addingTimeInterval(86400)
-        let start = calendar.date(byAdding: .weekOfYear, value: -1, to: end)!
-        var month = DateComponents()
-        month.day = 1
-        data = CoreDataStack.shared.getValues(from: start, to: end, interval: month)
-        assert(data.count == 7)
+        let day = DateComponents(day: 1)
+        data = CoreDataStack.shared.getValues(groupedBy: .weekOfYear, interval: day)
     }
     
     func loadMonthData() {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
-        let end = calendar.startOfDay(for: Date()).addingTimeInterval(86400)
-        let start = calendar.date(byAdding: .month, value: -1, to: end)!
-        var month = DateComponents()
-        month.day = 1
-        data = CoreDataStack.shared.getValues(from: start, to: end, interval: month)
+        let day = DateComponents(day: 1)
+        data = CoreDataStack.shared.getValues(groupedBy: .month, interval: day)
     }
     
     func loadYearData() {
         var calendar = Calendar.current
         calendar.timeZone = NSTimeZone.local
-        let end = calendar.startOfDay(for: Date()).addingTimeInterval(86400)
-        let start = calendar.date(byAdding: .year, value: -1, to: end)!
-        var month = DateComponents()
-        month.month = 1
-        data = CoreDataStack.shared.getValues(from: start, to: end, interval: month)
+        let month = DateComponents(month: 1)
+        data = CoreDataStack.shared.getValues(groupedBy: .year, interval: month)
     }
 }
 

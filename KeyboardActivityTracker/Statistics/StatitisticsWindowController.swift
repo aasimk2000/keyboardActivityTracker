@@ -14,8 +14,8 @@ enum StatisticsTimerange: Int {
 
 final class StatisticsWindowController: NSWindowController {
     @IBAction func didSelectTimerange(_ sender: NSSegmentedControl) {
-        guard let statisticsViewController = contentViewController as? StatisticsViewController else { assert(false) }
-        guard let newTimeRange = StatisticsTimerange(rawValue: sender.selectedSegment ) else { assert(false) }
+        guard let statisticsViewController = contentViewController as? StatisticsViewController else { exit(0) }
+        guard let newTimeRange = StatisticsTimerange(rawValue: sender.selectedSegment ) else { exit(0) }
         statisticsViewController.currentTimeRange = newTimeRange
     }
 }
