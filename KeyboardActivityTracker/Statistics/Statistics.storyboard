@@ -10,54 +10,83 @@
         <scene sceneID="N5O-NL-s8h">
             <objects>
                 <windowController showSeguePresentationStyle="single" id="13d-IY-oQh" customClass="StatisticsWindowController" customModule="KeyboardActivityTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="disallowed" id="4ps-9i-0Ie">
+                    <window key="window" title="Statistics" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" releasedWhenClosed="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" tabbingMode="disallowed" id="4ps-9i-0Ie">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
                         <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="163" y="197" width="480" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1280" height="775"/>
-                        <value key="minSize" type="size" width="480" height="270"/>
+                        <rect key="contentRect" x="163" y="197" width="650" height="392"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="875"/>
+                        <value key="minSize" type="size" width="600" height="270"/>
                         <view key="contentView" id="Ak0-Ko-34C">
-                            <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
+                            <rect key="frame" x="0.0" y="0.0" width="650" height="392"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </view>
+                        <toolbar key="toolbar" implicitIdentifier="CB2122E0-EF1D-4172-92CE-5B74AADF9078" centeredItem="OSt-ki-elD" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="regular" id="YGd-Q2-4rZ">
+                            <allowedToolbarItems>
+                                <toolbarItem implicitItemIdentifier="5FC17538-6A1F-4AC0-B5B9-DBAC5B459810" label="Timerange Selector" paletteLabel="Timerange Selector" sizingBehavior="auto" id="OSt-ki-elD">
+                                    <nil key="toolTip"/>
+                                    <segmentedControl key="view" verticalHuggingPriority="750" id="vRG-aA-LQ3">
+                                        <rect key="frame" x="0.0" y="14" width="317" height="40"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                                        <segmentedCell key="cell" controlSize="large" borderStyle="border" alignment="left" style="texturedRounded" trackingMode="selectOne" id="fNJ-Pc-hho">
+                                            <font key="font" metaFont="system"/>
+                                            <segments>
+                                                <segment label="Day" width="64"/>
+                                                <segment label="Week" width="64" selected="YES" tag="1"/>
+                                                <segment label="Month" width="64" tag="2"/>
+                                                <segment label="Year" width="64" tag="3"/>
+                                            </segments>
+                                        </segmentedCell>
+                                    </segmentedControl>
+                                    <connections>
+                                        <action selector="didSelectTimerange:" target="13d-IY-oQh" id="NTd-aZ-3YF"/>
+                                    </connections>
+                                </toolbarItem>
+                                <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="lZW-rW-uVK"/>
+                            </allowedToolbarItems>
+                            <defaultToolbarItems>
+                                <toolbarItem reference="lZW-rW-uVK"/>
+                                <toolbarItem reference="OSt-ki-elD"/>
+                                <toolbarItem reference="lZW-rW-uVK"/>
+                            </defaultToolbarItems>
+                        </toolbar>
                         <connections>
                             <outlet property="delegate" destination="13d-IY-oQh" id="4A2-hE-tco"/>
                         </connections>
                     </window>
                     <connections>
-                        <segue destination="j1J-xi-Mi1" kind="relationship" relationship="window.shadowedContentViewController" id="GoW-Wk-GfY"/>
+                        <segue destination="ws9-9q-gZl" kind="relationship" relationship="window.shadowedContentViewController" id="ChU-WI-Wbe"/>
                     </connections>
                 </windowController>
                 <customObject id="4ZQ-pr-onf" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-620" y="177"/>
+            <point key="canvasLocation" x="-567" y="238"/>
         </scene>
         <!--Statistics View Controller-->
-        <scene sceneID="2aw-0t-UQr">
+        <scene sceneID="eSy-yT-nXL">
             <objects>
-                <viewController id="j1J-xi-Mi1" customClass="StatisticsViewController" customModule="KeyboardActivityTracker" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" id="88K-RV-Hyw">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="270"/>
-                        <autoresizingMask key="autoresizingMask"/>
+                <viewController id="ws9-9q-gZl" customClass="StatisticsViewController" customModule="KeyboardActivityTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <customView key="view" id="bdf-E8-B0i">
+                        <rect key="frame" x="0.0" y="0.0" width="450" height="300"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
                         <subviews>
-                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="1xz-xc-bbd" customClass="StatisticsView" customModule="KeyboardActivityTracker" customModuleProvider="target">
-                                <rect key="frame" x="10" y="10" width="460" height="250"/>
+                            <customView translatesAutoresizingMaskIntoConstraints="NO" id="Mh5-5W-5Jr" customClass="StatisticsView" customModule="KeyboardActivityTracker" customModuleProvider="target">
+                                <rect key="frame" x="20" y="20" width="410" height="260"/>
                             </customView>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="1xz-xc-bbd" firstAttribute="top" secondItem="88K-RV-Hyw" secondAttribute="top" constant="10" id="58h-a8-pQd"/>
-                            <constraint firstAttribute="trailing" secondItem="1xz-xc-bbd" secondAttribute="trailing" constant="10" id="Cwj-FH-q5U"/>
-                            <constraint firstItem="1xz-xc-bbd" firstAttribute="leading" secondItem="88K-RV-Hyw" secondAttribute="leading" constant="10" id="fGC-ZS-HMe"/>
-                            <constraint firstAttribute="bottom" secondItem="1xz-xc-bbd" secondAttribute="bottom" constant="10" id="wsz-bW-KaV"/>
+                            <constraint firstAttribute="trailing" secondItem="Mh5-5W-5Jr" secondAttribute="trailing" constant="20" symbolic="YES" id="3Nu-18-a7G"/>
+                            <constraint firstItem="Mh5-5W-5Jr" firstAttribute="top" secondItem="bdf-E8-B0i" secondAttribute="top" constant="20" symbolic="YES" id="QdF-S4-otb"/>
+                            <constraint firstAttribute="bottom" secondItem="Mh5-5W-5Jr" secondAttribute="bottom" constant="20" symbolic="YES" id="qzz-bB-z68"/>
+                            <constraint firstItem="Mh5-5W-5Jr" firstAttribute="leading" secondItem="bdf-E8-B0i" secondAttribute="leading" constant="20" symbolic="YES" id="u2g-bC-c25"/>
                         </constraints>
-                    </view>
+                    </customView>
                     <connections>
-                        <outlet property="statisticsView" destination="1xz-xc-bbd" id="xP2-lr-k5e"/>
+                        <outlet property="statisticsView" destination="Mh5-5W-5Jr" id="EmN-TN-flu"/>
                     </connections>
                 </viewController>
-                <customObject id="7dV-Ew-28q" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <customObject id="bHm-CZ-GQq" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="87" y="146"/>
+            <point key="canvasLocation" x="-567" y="782"/>
         </scene>
     </scenes>
 </document>

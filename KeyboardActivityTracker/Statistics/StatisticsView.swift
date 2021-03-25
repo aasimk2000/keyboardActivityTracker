@@ -80,7 +80,7 @@ class StatisticsView: NSView {
                 let labelBounds = CGRect(x: rect.minX, y: rect.minY, width: dataSpacing, height: rect.height)
                 labelText.draw(in: labelBounds, withAttributes: attributes)
             }
-            ctx.translateBy(x: dataSpacing, y: 0)
+            ctx.translateBy(x: dataSpacing - 2, y: 0)
         }
         ctx.restoreGState()
     }
@@ -179,14 +179,14 @@ class StatisticsView: NSView {
         let bottom: CGFloat = rect.origin.y + bottomLabelHeight(rect)
         let topPadding: CGFloat = 10
         let height = rect.height - bottomLabelHeight(rect) - topPadding
-        let left: CGFloat = rect.origin.x
+        let left: CGFloat = rect.minX + leftPadding(rect)
         let right = rect.width - rightLabelWidth(rect)
         return NSRect(x: left, y: bottom, width: right, height: height)
     }
     
     func labelRect(_ rect: NSRect) -> NSRect {
         let bottom = rect.origin.y
-        let left = rect.origin.x
+        let left = rect.minX + leftPadding(rect)
         let width = rect.width - rightLabelWidth(rect)
         let height = bottomLabelHeight(rect)
         return NSRect(x: left, y: bottom, width: width, height: height)
@@ -199,5 +199,9 @@ class StatisticsView: NSView {
     func rightLabelWidth(_ rect: NSRect) -> CGFloat {
         // TODO: Fix this to be better
         return 40
+    }
+    
+    func leftPadding(_ rect: NSRect) -> CGFloat {
+        return 20
     }
 }
