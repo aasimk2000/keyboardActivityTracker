@@ -75,7 +75,6 @@ class StatisticsView: NSView {
         guard let ctx = NSGraphicsContext.current?.cgContext else { return }
         ctx.saveGState()
         let dataSpacing = (rect.width / CGFloat(itemCount - 1)).rounded(.down)
-        print(dataSpacing)
         for i in 0..<itemCount {
             if let labelText = dataSource.statisticsViewLabel(for: i) as NSString? {
                 // Have minX to datasapcing to draw Label
@@ -151,7 +150,6 @@ class StatisticsView: NSView {
         path.lineJoinStyle = .round
         let rect = rect.insetBy(dx: lineWidth / 2, dy: lineWidth)
         let horizontalSpacing = rect.width / CGFloat(dataCounts - 1)
-        print(horizontalSpacing)
         let verticalScale = rect.height / (maxCount - minCount)
         var currentKeyCount = dataSource.statisticsViewValue(for: 0)
         let initialPoint = CGPoint(x: rect.minX, y: rect.minY + (currentKeyCount - minCount) * verticalScale)

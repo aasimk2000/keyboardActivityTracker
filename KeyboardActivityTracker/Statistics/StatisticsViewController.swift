@@ -21,7 +21,14 @@ final class StatisticsViewController: NSViewController {
         }
     }
     
-    var data: [(Date, Int)]!
+    var data: [(Date, Int)]! {
+        didSet {
+            max = data.max { $0.1 < $1.1 }!.1
+            min = data.min { $0.1 < $1.1 }!.1
+        }
+    }
+    var max: Int = 0
+    var min: Int = 0
     lazy var dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.setLocalizedDateFormatFromTemplate("EEEEE")
@@ -93,11 +100,11 @@ extension StatisticsViewController: StatisticsViewDataSource {
     }
     
     func statisticsViewMaxValue() -> CGFloat {
-        return CGFloat(data.max { $0.1 < $1.1 }!.1 )
+        return CGFloat(max)
     }
     
     func statisticsViewMinValue() -> CGFloat {
-        return CGFloat(data.min { $0.1 < $1.1 }!.1 )
+        return CGFloat(min)
     }
     
     func statisticsViewLabel(for index: Int) -> String? {
